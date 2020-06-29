@@ -5157,11 +5157,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Tabatha\\Source\\Repos\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.Infrastructure\\ErrorCentral.Infrastructure.csproj",
+      "projectUniqueName": "C:\\Users\\Tabatha\\source\\repos\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.Infrastructure\\ErrorCentral.Infrastructure.csproj",
       "projectName": "ErrorCentral.Infrastructure",
-      "projectPath": "C:\\Users\\Tabatha\\Source\\Repos\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.Infrastructure\\ErrorCentral.Infrastructure.csproj",
+      "projectPath": "C:\\Users\\Tabatha\\source\\repos\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.Infrastructure\\ErrorCentral.Infrastructure.csproj",
       "packagesPath": "C:\\Users\\Tabatha\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Tabatha\\Source\\Repos\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.Infrastructure\\obj\\",
+      "outputPath": "C:\\Users\\Tabatha\\source\\repos\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -5180,8 +5180,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\Tabatha\\Source\\Repos\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.AppDomain\\ErrorCentral.AppDomain.csproj": {
-              "projectPath": "C:\\Users\\Tabatha\\Source\\Repos\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.AppDomain\\ErrorCentral.AppDomain.csproj"
+            "C:\\Users\\Tabatha\\source\\repos\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.AppDomain\\ErrorCentral.AppDomain.csproj": {
+              "projectPath": "C:\\Users\\Tabatha\\source\\repos\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.AppDomain\\ErrorCentral.AppDomain.csproj"
             }
           }
         }

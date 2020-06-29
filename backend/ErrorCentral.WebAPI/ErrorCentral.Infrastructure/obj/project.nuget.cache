@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "YH+gInk3F+ThNFnMwKcFqxz9DPahPF6zaH6LvAKU1wXlmLmNKWrJo1GaWrRvVDnpGoZgQA936NNWMV08Lt5b0A==",
+  "dgSpecHash": "7WuMwIEnH9vG5mPqViVGEracUY6u5FjW/mpR4nM7L8l+F6mZyrlL3aCRj7dqVdXE4GN/6mSC6BVw2buI58UP/w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Tabatha\\Source\\Repos\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.Infrastructure\\ErrorCentral.Infrastructure.csproj",
+  "projectFilePath": "C:\\Users\\Tabatha\\source\\repos\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.Infrastructure\\ErrorCentral.Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Tabatha\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\Tabatha\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",

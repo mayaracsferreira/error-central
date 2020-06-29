@@ -8,7 +8,7 @@ namespace ErrorCentral.Infrastructure.Context
 {
     public class EventContext : DbContext
     {
-        public DbSet<EventLog> EventLogs { get;set; }
+        public DbSet<EventLog> EventLogs { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -21,6 +21,12 @@ namespace ErrorCentral.Infrastructure.Context
             }
 
             base.OnConfiguring(optionsBuilder);
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            
+
         }
     }
 }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Tabatha\\Source\\Repos\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.WebAPI\\ErrorCentral.WebAPI.csproj": {}
+    "C:\\Users\\Tabatha\\source\\repos\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.WebAPI\\ErrorCentral.WebAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Tabatha\\Source\\Repos\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.WebAPI\\ErrorCentral.WebAPI.csproj": {
+    "C:\\Users\\Tabatha\\source\\repos\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.WebAPI\\ErrorCentral.WebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Tabatha\\Source\\Repos\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.WebAPI\\ErrorCentral.WebAPI.csproj",
+        "projectUniqueName": "C:\\Users\\Tabatha\\source\\repos\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.WebAPI\\ErrorCentral.WebAPI.csproj",
         "projectName": "ErrorCentral.WebAPI",
-        "projectPath": "C:\\Users\\Tabatha\\Source\\Repos\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.WebAPI\\ErrorCentral.WebAPI.csproj",
+        "projectPath": "C:\\Users\\Tabatha\\source\\repos\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.WebAPI\\ErrorCentral.WebAPI.csproj",
         "packagesPath": "C:\\Users\\Tabatha\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Tabatha\\Source\\Repos\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.WebAPI\\obj\\",
+        "outputPath": "C:\\Users\\Tabatha\\source\\repos\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.WebAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
