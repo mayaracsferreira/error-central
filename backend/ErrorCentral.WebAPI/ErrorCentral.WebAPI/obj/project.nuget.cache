@@ -1,15 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "elLrQEgokbSt+GhiCs+fuXRN+F1dk/fqbnlHiugmuB9yEUEJgh+/jyqFA3kxvtBzxmvRi03nPU8n1/MIM2b6Gw==",
+  "dgSpecHash": "fSLOVWhH1wB3DGzJ4rYKzAwU8QKZ3c/1csjtrYNahLyyLbe+AAbywr0D9/QYgtTSv1HufTkhU2lsbgfIw8Gd+A==",
   "success": true,
-  "projectFilePath": "D:\\MyLib\\Pessoal\\Estudos\\Avulsos\\CSharp\\AceleraDev\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.WebAPI\\ErrorCentral.WebAPI.csproj",
+  "projectFilePath": "C:\\Users\\Tabatha\\Source\\Repos\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.WebAPI\\ErrorCentral.WebAPI.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\mcristina\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
-    "C:\\Users\\mcristina\\.nuget\\packages\\microsoft.openapi\\1.1.4\\microsoft.openapi.1.1.4.nupkg.sha512",
-    "C:\\Users\\mcristina\\.nuget\\packages\\swashbuckle.aspnetcore\\5.5.1\\swashbuckle.aspnetcore.5.5.1.nupkg.sha512",
-    "C:\\Users\\mcristina\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\5.5.1\\swashbuckle.aspnetcore.swagger.5.5.1.nupkg.sha512",
-    "C:\\Users\\mcristina\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\5.5.1\\swashbuckle.aspnetcore.swaggergen.5.5.1.nupkg.sha512",
-    "C:\\Users\\mcristina\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\5.5.1\\swashbuckle.aspnetcore.swaggerui.5.5.1.nupkg.sha512"
+    "C:\\Users\\Tabatha\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\Tabatha\\.nuget\\packages\\microsoft.openapi\\1.1.4\\microsoft.openapi.1.1.4.nupkg.sha512",
+    "C:\\Users\\Tabatha\\.nuget\\packages\\swashbuckle.aspnetcore\\5.5.1\\swashbuckle.aspnetcore.5.5.1.nupkg.sha512",
+    "C:\\Users\\Tabatha\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\5.5.1\\swashbuckle.aspnetcore.swagger.5.5.1.nupkg.sha512",
+    "C:\\Users\\Tabatha\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\5.5.1\\swashbuckle.aspnetcore.swaggergen.5.5.1.nupkg.sha512",
+    "C:\\Users\\Tabatha\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\5.5.1\\swashbuckle.aspnetcore.swaggerui.5.5.1.nupkg.sha512"
   ],
   "logs": []
 }

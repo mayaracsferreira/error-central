@@ -5,9 +5,17 @@ VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ErrorCentral.WebAPI", "ErrorCentral.WebAPI\ErrorCentral.WebAPI.csproj", "{3FEA9C2F-EC8F-4DF4-AB04-7095CC988964}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ErrorCentral.AppDomain", "ErrorCentral.AppDomain\ErrorCentral.AppDomain.csproj", "{E749765F-B817-44A4-8C39-A435F64710CB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ErrorCentral.AppDomain", "ErrorCentral.AppDomain\ErrorCentral.AppDomain.csproj", "{E749765F-B817-44A4-8C39-A435F64710CB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ErrorCentral.Infrastructure", "ErrorCentral.Infrastructure\ErrorCentral.Infrastructure.csproj", "{E9B9EFC9-2D83-4248-B27A-96860E74F004}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ErrorCentral.Infrastructure", "ErrorCentral.Infrastructure\ErrorCentral.Infrastructure.csproj", "{E9B9EFC9-2D83-4248-B27A-96860E74F004}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{62098272-13BA-44B7-8B65-D312966BCA17}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{14551686-8ED2-4C43-8D9D-6BAD3EE666BE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastucture", "Infrastucture", "{B96878B1-8AA0-4692-AC1B-4EE9620CF463}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{EA8C3991-44A0-4CB8-A387-8B760902BD0E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,6 +38,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3FEA9C2F-EC8F-4DF4-AB04-7095CC988964} = {62098272-13BA-44B7-8B65-D312966BCA17}
+		{E749765F-B817-44A4-8C39-A435F64710CB} = {14551686-8ED2-4C43-8D9D-6BAD3EE666BE}
+		{E9B9EFC9-2D83-4248-B27A-96860E74F004} = {B96878B1-8AA0-4692-AC1B-4EE9620CF463}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C42C35E6-0DE1-4E5C-B321-33FC9D1F7914}

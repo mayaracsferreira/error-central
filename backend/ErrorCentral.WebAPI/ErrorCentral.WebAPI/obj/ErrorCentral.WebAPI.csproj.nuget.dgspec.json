@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\MyLib\\Pessoal\\Estudos\\Avulsos\\CSharp\\AceleraDev\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.WebAPI\\ErrorCentral.WebAPI.csproj": {}
+    "C:\\Users\\Tabatha\\Source\\Repos\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.WebAPI\\ErrorCentral.WebAPI.csproj": {}
   },
   "projects": {
-    "D:\\MyLib\\Pessoal\\Estudos\\Avulsos\\CSharp\\AceleraDev\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.WebAPI\\ErrorCentral.WebAPI.csproj": {
+    "C:\\Users\\Tabatha\\Source\\Repos\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.WebAPI\\ErrorCentral.WebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\MyLib\\Pessoal\\Estudos\\Avulsos\\CSharp\\AceleraDev\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.WebAPI\\ErrorCentral.WebAPI.csproj",
+        "projectUniqueName": "C:\\Users\\Tabatha\\Source\\Repos\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.WebAPI\\ErrorCentral.WebAPI.csproj",
         "projectName": "ErrorCentral.WebAPI",
-        "projectPath": "D:\\MyLib\\Pessoal\\Estudos\\Avulsos\\CSharp\\AceleraDev\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.WebAPI\\ErrorCentral.WebAPI.csproj",
-        "packagesPath": "C:\\Users\\mcristina\\.nuget\\packages\\",
-        "outputPath": "D:\\MyLib\\Pessoal\\Estudos\\Avulsos\\CSharp\\AceleraDev\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.WebAPI\\obj\\",
+        "projectPath": "C:\\Users\\Tabatha\\Source\\Repos\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.WebAPI\\ErrorCentral.WebAPI.csproj",
+        "packagesPath": "C:\\Users\\Tabatha\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Tabatha\\Source\\Repos\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.WebAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\mcristina\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Tabatha\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -64,7 +64,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
         }
       }
     }
