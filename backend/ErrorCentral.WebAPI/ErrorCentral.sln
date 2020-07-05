@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ErrorCentral.WebAPI", "Erro
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ErrorCentral.AppDomain", "ErrorCentral.AppDomain\ErrorCentral.AppDomain.csproj", "{E749765F-B817-44A4-8C39-A435F64710CB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ErrorCentral.Infrastructure", "ErrorCentral.Infrastructure\ErrorCentral.Infrastructure.csproj", "{E9B9EFC9-2D83-4248-B27A-96860E74F004}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ErrorCentral.Infra.Data", "ErrorCentral.Infrastructure\ErrorCentral.Infra.Data.csproj", "{E9B9EFC9-2D83-4248-B27A-96860E74F004}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{62098272-13BA-44B7-8B65-D312966BCA17}"
 EndProject

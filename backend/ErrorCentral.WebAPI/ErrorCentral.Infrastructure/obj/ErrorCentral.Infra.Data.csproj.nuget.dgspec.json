@@ -1,7 +1,7 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Tabatha\\source\\repos\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.WebAPI\\ErrorCentral.WebAPI.csproj": {}
+    "C:\\Users\\Tabatha\\source\\repos\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.Infrastructure\\ErrorCentral.Infra.Data.csproj": {}
   },
   "projects": {
     "C:\\Users\\Tabatha\\source\\repos\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.AppDomain\\ErrorCentral.AppDomain.csproj": {
@@ -59,14 +59,14 @@
         }
       }
     },
-    "C:\\Users\\Tabatha\\source\\repos\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.WebAPI\\ErrorCentral.WebAPI.csproj": {
+    "C:\\Users\\Tabatha\\source\\repos\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.Infrastructure\\ErrorCentral.Infra.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Tabatha\\source\\repos\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.WebAPI\\ErrorCentral.WebAPI.csproj",
-        "projectName": "ErrorCentral.WebAPI",
-        "projectPath": "C:\\Users\\Tabatha\\source\\repos\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.WebAPI\\ErrorCentral.WebAPI.csproj",
+        "projectUniqueName": "C:\\Users\\Tabatha\\source\\repos\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.Infrastructure\\ErrorCentral.Infra.Data.csproj",
+        "projectName": "ErrorCentral.Infra.Data",
+        "projectPath": "C:\\Users\\Tabatha\\source\\repos\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.Infrastructure\\ErrorCentral.Infra.Data.csproj",
         "packagesPath": "C:\\Users\\Tabatha\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Tabatha\\source\\repos\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.WebAPI\\obj\\",
+        "outputPath": "C:\\Users\\Tabatha\\source\\repos\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -100,13 +100,41 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
-            "AutoMapper": {
+            "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[10.0.0, )"
+              "version": "[3.1.5, )"
             },
-            "Swashbuckle.AspNetCore": {
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
-              "version": "[5.5.1, )"
+              "version": "[3.1.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[3.1.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.5, )"
+            },
+            "Microsoft.Extensions.Configuration.FileExtensions": {
+              "target": "Package",
+              "version": "[3.1.5, )"
+            },
+            "Microsoft.Extensions.Options": {
+              "target": "Package",
+              "version": "[3.1.5, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.1, )"
             }
           },
           "imports": [
@@ -120,9 +148,6 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }

@@ -1,15 +1,18 @@
 {
   "version": 2,
-  "dgSpecHash": "WdcOjjAUoWYH8yRZ94rRcY+L1xbQ0ehSMMJKJcG2eidHtUgmB2aZyHYaViTN8IrM4/pkoq30cUZX9c6gKNnqmA==",
+  "dgSpecHash": "1sPC7W6uGzsdeHD+KYxHqZgTEEHarHhYkYHs+rAykijtbNMDlNAPInukymwT2DCyJtDj6ZJ4sCbUSYFVyqUZIg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Tabatha\\source\\repos\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.WebAPI\\ErrorCentral.WebAPI.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Tabatha\\.nuget\\packages\\automapper\\10.0.0\\automapper.10.0.0.nupkg.sha512",
+    "C:\\Users\\Tabatha\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Tabatha\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\Tabatha\\.nuget\\packages\\microsoft.openapi\\1.1.4\\microsoft.openapi.1.1.4.nupkg.sha512",
     "C:\\Users\\Tabatha\\.nuget\\packages\\swashbuckle.aspnetcore\\5.5.1\\swashbuckle.aspnetcore.5.5.1.nupkg.sha512",
     "C:\\Users\\Tabatha\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\5.5.1\\swashbuckle.aspnetcore.swagger.5.5.1.nupkg.sha512",
     "C:\\Users\\Tabatha\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\5.5.1\\swashbuckle.aspnetcore.swaggergen.5.5.1.nupkg.sha512",
-    "C:\\Users\\Tabatha\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\5.5.1\\swashbuckle.aspnetcore.swaggerui.5.5.1.nupkg.sha512"
+    "C:\\Users\\Tabatha\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\5.5.1\\swashbuckle.aspnetcore.swaggerui.5.5.1.nupkg.sha512",
+    "C:\\Users\\Tabatha\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512"
   ],
   "logs": []
 }

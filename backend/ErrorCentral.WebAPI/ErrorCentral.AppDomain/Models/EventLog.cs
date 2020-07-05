@@ -34,10 +34,13 @@ namespace ErrorCentral.AppDomain.Models
         [Column("Environment", TypeName = "nvarchar(255)"), Required]
         public string Environment { get; set; }
 
-        [Column("Archived", TypeName = "boolean"), Required]
+
+        // O tipo booleano não existe no Sql Server.
+        [Column("Archived", TypeName = "bit"), Required]
         public bool Archived { get; set; }
 
         [Column("CreatedDate", TypeName = "datetime"), Required]
         public DateTime CreatedDate { get; set; }
+
     }
 }
