@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -11,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace ErrorCentral.WebAPI
 {
@@ -32,7 +35,12 @@ namespace ErrorCentral.WebAPI
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ErrorCentral", Version = "v1", Description = "ASP.NET Core Web API", });
-            });
+
+                var xmlFile = $"{ Assembly.GetExecutingAssembly().GetName().Name}.xml";                    
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
+                //c.AddFluentValidationRules();
+            });            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
