@@ -31,6 +31,11 @@ namespace ErrorCentral.WebAPI
         {
             services.AddControllers();
 
+            // Adding authentication/authorization services
+            services.AddSingleton<IAuthenticationService, FakeAuthenticationService>();
+            services.AddSingleton<IAuthorizationService, FakeAuthorizationService>();
+            services.AddControllers();
+
             // Adding Swagger service to application
             services.AddSwaggerGen(c =>
             {
