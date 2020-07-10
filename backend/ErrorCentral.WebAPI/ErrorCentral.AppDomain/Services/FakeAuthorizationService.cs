@@ -1,7 +1,10 @@
+using ErrorCentral.AppDomain.Models;
+using System;
+using System.Threading.Tasks;
+
 public sealed class FakeAuthorizationService : IAuthorizationService
 {
-    public async Task<BaseResult<IUser>> AuthorizeAsync(
-        LoginUser loginUser)
+    public async Task<BaseResult<IUser>> AuthorizeAsync(LoginUser loginUser)
     {
         var loginOrEmail = loginUser?.LoginOrEmail ?? "";
         var password = loginUser?.Password ?? "";

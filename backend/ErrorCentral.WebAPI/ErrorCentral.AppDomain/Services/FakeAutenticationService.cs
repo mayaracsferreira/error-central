@@ -1,3 +1,6 @@
+using System;
+using System.Threading.Tasks;
+
 public sealed class FakeAuthenticationService : IAuthenticationService
 {
     public async Task<AuthenticationResult> AuthenticateAsync(

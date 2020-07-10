@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ErrorCentral.AppDomain.Interfaces;
 using ErrorCentral.AppDomain.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,11 +14,11 @@ using Microsoft.AspNetCore.Mvc;
 public sealed class LoginController : ControllerBase
 {
     private readonly IAuthenticationService _authenticationService;
-    private readonly Service.IAuthorizationService _authorizationService;
+    private readonly IAuthorizationService _authorizationService;
  
     public LoginController(
         IAuthenticationService authenticationService,
-        Service.IAuthorizationService authorizationService)
+        IAuthorizationService authorizationService)
     {
         _authenticationService = authenticationService;
         _authorizationService = authorizationService;
