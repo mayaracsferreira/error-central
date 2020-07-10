@@ -4,6 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using ErrorCentral.AppDomain.Interfaces;
+using ErrorCentral.AppDomain.Models;
+using ErrorCentral.AppDomain.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -29,10 +32,11 @@ namespace ErrorCentral.WebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            var siginingConfiguration = new SigningConfiguration();
+            services.AddSingleton(siginingConfiguration);
 
             // Adding authentication/authorization services
-            services.AddSingleton<IAuthenticationService, FakeAuthenticationService>();
+            services.AddSingleton<IAuthenticationService, JwtIdentityAuthenticationService>();
             services.AddSingleton<IAuthorizationService, FakeAuthorizationService>();
             services.AddControllers();
 

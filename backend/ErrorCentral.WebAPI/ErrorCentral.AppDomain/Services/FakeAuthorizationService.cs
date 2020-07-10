@@ -1,34 +1,38 @@
+using ErrorCentral.AppDomain.Interfaces;
 using ErrorCentral.AppDomain.Models;
 using System;
 using System.Threading.Tasks;
 
-public sealed class FakeAuthorizationService : IAuthorizationService
+namespace ErrorCentral.AppDomain.Services
 {
-    public async Task<BaseResult<IUser>> AuthorizeAsync(LoginUser loginUser)
+    public sealed class FakeAuthorizationService : IAuthorizationService
     {
-        var loginOrEmail = loginUser?.LoginOrEmail ?? "";
-        var password = loginUser?.Password ?? "";
- 
-        var result = new BaseResult<IUser>();
- 
-        if (loginOrEmail == "fsl" && password == "1234")
+        public async Task<BaseResult<IUser>> AuthorizeAsync(LoginUser loginUser)
         {
-            result.Success = true;
-            result.Message = "User authorized!";
-            result.Data = new MyLoggedUser
+            var loginOrEmail = loginUser?.LoginOrEmail ?? "";
+            var password = loginUser?.Password ?? "";
+
+            var result = new BaseResult<IUser>();
+
+            if (loginOrEmail == "fsl" && password == "1234")
             {
-                Id = Guid.NewGuid().ToString(),
-                Name = "Name test",
-                Credentials = "01|02|09",
-                IsAdmin = false
-            };
+                result.Success = true;
+                result.Message = "User authorized!";
+                result.Data = new MyLoggedUser
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    Name = "Name test",
+                    Credentials = "01|02|09",
+                    IsAdmin = false
+                };
+            }
+            else
+            {
+                result.Success = false;
+                result.Message = "Not authorized!";
+            }
+
+            return await Task.FromResult(result);
         }
-        else
-        {
-            result.Success = false;
-            result.Message = "Not authorized!";
-        }
- 
-        return await Task.FromResult(result);
     }
 }

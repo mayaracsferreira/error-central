@@ -14,11 +14,11 @@ using Microsoft.AspNetCore.Mvc;
 public sealed class LoginController : ControllerBase
 {
     private readonly IAuthenticationService _authenticationService;
-    private readonly IAuthorizationService _authorizationService;
+    private readonly ErrorCentral.AppDomain.Interfaces.IAuthorizationService _authorizationService;
  
     public LoginController(
         IAuthenticationService authenticationService,
-        IAuthorizationService authorizationService)
+        ErrorCentral.AppDomain.Interfaces.IAuthorizationService authorizationService)
     {
         _authenticationService = authenticationService;
         _authorizationService = authorizationService;
@@ -34,13 +34,13 @@ public sealed class LoginController : ControllerBase
         {
             return Ok(authorization);
         }
- 
-        var authentication = await _authenticationService.AuthenticateAsync(authorization.Data);
+
+        var authentication = _authenticationService.Authenticate(authorization.Data);
         if (!authentication.Success)
         {
             return Ok(authentication);
         }
- 
+
         return Ok(authentication);
     }
 }

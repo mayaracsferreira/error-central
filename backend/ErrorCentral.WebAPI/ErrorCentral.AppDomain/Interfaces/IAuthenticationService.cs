@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-public interface IAuthenticationService
+namespace ErrorCentral.AppDomain.Interfaces
 {
-    Task<AuthenticationResult> AuthenticateAsync(
-        IUser user);
+    public interface IAuthenticationService
+    {
+        AuthenticationResult Authenticate(IUser user);
+    }
 }
