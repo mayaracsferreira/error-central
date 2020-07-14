@@ -7,7 +7,7 @@ namespace ErrorCentral.AppDomain.Services
 {
     public sealed class FakeAuthorizationService : IAuthorizationService
     {
-        public async Task<BaseResult<IUser>> AuthorizeAsync(LoginUser loginUser)
+        public BaseResult<IUser> Authorize(LoginUser loginUser)
         {
             var loginOrEmail = loginUser?.LoginOrEmail ?? "";
             var password = loginUser?.Password ?? "";
@@ -32,7 +32,7 @@ namespace ErrorCentral.AppDomain.Services
                 result.Message = "Not authorized!";
             }
 
-            return await Task.FromResult(result);
+            return result;
         }
     }
 }

@@ -8,6 +8,6 @@ namespace ErrorCentral.AppDomain.Interfaces
 {
     public interface IAuthorizationService
     {
-        Task<BaseResult<IUser>> AuthorizeAsync(LoginUser loginUser);
+        BaseResult<IUser> Authorize(LoginUser loginUser);
     }
 }

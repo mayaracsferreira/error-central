@@ -7,19 +7,25 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Principal;
 using Newtonsoft.Json;
+using ErrorCentral.AppDomain.Models.FSL.ApiCustomIdentity.Models;
 
 namespace ErrorCentral.AppDomain.Services
 {
     public sealed class JwtIdentityAuthenticationService : IAuthenticationService
     {
         private readonly SigningConfiguration _signingConfiguration;
+        private readonly TokenConfiguration _tokenConfiguration;
 
-        public JwtIdentityAuthenticationService(SigningConfiguration signingConfiguration)
+        public JwtIdentityAuthenticationService(
+            SigningConfiguration signingConfiguration,
+            TokenConfiguration tokenConfiguration)
         {
             _signingConfiguration = signingConfiguration;
+            _tokenConfiguration = tokenConfiguration;
         }
 
-        public AuthenticationResult Authenticate(IUser user)
+        public AuthenticationResult Authenticate(
+            IUser user)
         {
             var claims = new List<Claim>
         {
@@ -28,15 +34,17 @@ namespace ErrorCentral.AppDomain.Services
             new Claim("Data", ToJson(user))
         };
 
-            var identity = new ClaimsIdentity(new GenericIdentity(user.Id, "Login"), claims);
+            var identity = new ClaimsIdentity(
+                new GenericIdentity(user.Id, "Login"),
+                claims);
 
             var created = DateTime.UtcNow;
-            var expiration = created + TimeSpan.FromSeconds(60000);
+            var expiration = created + TimeSpan.FromSeconds(_tokenConfiguration.ExpirationInSeconds); // dynamic
             var handler = new JwtSecurityTokenHandler();
             var securityToken = handler.CreateToken(new SecurityTokenDescriptor
             {
-                Issuer = "FSL",
-                Audience = "FSL",
+                Issuer = _tokenConfiguration.ValidIssuer, // dynamic
+                Audience = _tokenConfiguration.ValidAudience, // dynamic
                 SigningCredentials = _signingConfiguration.SigningCredentials,
                 Subject = identity,
                 NotBefore = created,
@@ -57,7 +65,7 @@ namespace ErrorCentral.AppDomain.Services
             return result;
         }
 
-        private string ToJson<T>(T obj)
+    private string ToJson<T>(T obj)
         {
             if (obj == null)
             {
