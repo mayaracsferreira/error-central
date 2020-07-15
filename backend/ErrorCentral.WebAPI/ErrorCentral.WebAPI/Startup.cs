@@ -6,7 +6,6 @@ using System.Reflection;
 using System.Threading.Tasks;
 using ErrorCentral.AppDomain.Interfaces;
 using ErrorCentral.AppDomain.Models;
-using ErrorCentral.AppDomain.Models.FSL.ApiCustomIdentity.Models;
 using ErrorCentral.AppDomain.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -127,8 +126,6 @@ namespace ErrorCentral.WebAPI
             {
                 app.UseDeveloperExceptionPage();
             }
-
-            app.UseHttpsRedirection();
 
             app.UseRouting();
 

@@ -1,7 +1,10 @@
-public sealed class AuthenticationResult : BaseResult<object>
+namespace ErrorCentral.AppDomain.Models
 {
-    public bool Authenticated { get; set; }
-    public string Created { get; set; }
-    public string Expiration { get; set; }
-    public string AccessToken { get; set; }
+    public sealed class AuthenticationResult : BaseResult<object>
+    {
+        public bool Authenticated { get; set; }
+        public string Created { get; set; }
+        public string Expiration { get; set; }
+        public string AccessToken { get; set; }
+    }
 }

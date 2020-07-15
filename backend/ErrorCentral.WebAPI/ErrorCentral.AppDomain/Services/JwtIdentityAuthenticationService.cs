@@ -7,7 +7,6 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Principal;
 using Newtonsoft.Json;
-using ErrorCentral.AppDomain.Models.FSL.ApiCustomIdentity.Models;
 
 namespace ErrorCentral.AppDomain.Services
 {
