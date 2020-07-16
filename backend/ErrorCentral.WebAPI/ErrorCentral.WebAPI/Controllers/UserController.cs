@@ -11,7 +11,7 @@ namespace ErrorCentral.WebAPI.Controllers
 {
     [Route("api/user")]
     [ApiController]
-    [MyAuthorize]
+    [Authorize("Bearer")]
     public sealed class UserController : ControllerBase
     {
         private readonly ILoggedUserService _loggedUserService;

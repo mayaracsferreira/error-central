@@ -38,12 +38,13 @@ namespace ErrorCentral.AppDomain.Services
                 claims);
 
             var created = DateTime.UtcNow;
-            var expiration = created + TimeSpan.FromSeconds(_tokenConfiguration.ExpirationInSeconds); // dynamic
+            // See appsettings to change token configurations
+            var expiration = created + TimeSpan.FromSeconds(_tokenConfiguration.ExpirationInSeconds);
             var handler = new JwtSecurityTokenHandler();
             var securityToken = handler.CreateToken(new SecurityTokenDescriptor
             {
-                Issuer = _tokenConfiguration.ValidIssuer, // dynamic
-                Audience = _tokenConfiguration.ValidAudience, // dynamic
+                Issuer = _tokenConfiguration.ValidIssuer, 
+                Audience = _tokenConfiguration.ValidAudience, 
                 SigningCredentials = _signingConfiguration.SigningCredentials,
                 Subject = identity,
                 NotBefore = created,

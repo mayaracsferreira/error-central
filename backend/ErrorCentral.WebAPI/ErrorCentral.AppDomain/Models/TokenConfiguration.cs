@@ -4,6 +4,7 @@ using System.Text;
 
 namespace ErrorCentral.AppDomain.Models
 {
+    // These informations are setted in appsettings file
     public sealed class TokenConfiguration
     {
         public const string Policy = "Bearer";

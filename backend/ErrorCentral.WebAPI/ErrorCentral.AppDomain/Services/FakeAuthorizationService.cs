@@ -1,7 +1,6 @@
 using ErrorCentral.AppDomain.Interfaces;
 using ErrorCentral.AppDomain.Models;
 using System;
-using System.Threading.Tasks;
 
 namespace ErrorCentral.AppDomain.Services
 {
