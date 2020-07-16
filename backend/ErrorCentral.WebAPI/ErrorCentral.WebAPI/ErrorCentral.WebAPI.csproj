@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ErrorCentral.AppDomain\ErrorCentral.AppDomain.csproj" />
+    <ProjectReference Include="..\ErrorCentral.Infrastructure\ErrorCentral.Infra.Data.csproj" />
   </ItemGroup>
 
 

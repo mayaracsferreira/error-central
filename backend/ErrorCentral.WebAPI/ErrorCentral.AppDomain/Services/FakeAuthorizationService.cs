@@ -17,12 +17,11 @@ namespace ErrorCentral.AppDomain.Services
             {
                 result.Success = true;
                 result.Message = "User authorized!";
-                result.Data = new MyLoggedUser
+                result.Data = new User
                 {
-                    Id = Guid.NewGuid().ToString(),
+                    Id = 666,
                     Name = "Name test",
-                    Credentials = "01|02|09",
-                    IsAdmin = false
+                    Email = loginOrEmail
                 };
             }
             else

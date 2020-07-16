@@ -29,12 +29,12 @@ namespace ErrorCentral.AppDomain.Services
             var claims = new List<Claim>
         {
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString("N")),
-            new Claim(JwtRegisteredClaimNames.UniqueName, user.Id),
+            new Claim(JwtRegisteredClaimNames.UniqueName, user.Id.ToString()),
             new Claim("Data", ToJson(user))
         };
 
             var identity = new ClaimsIdentity(
-                new GenericIdentity(user.Id, "Login"),
+                new GenericIdentity(user.Id.ToString(), "Login"),
                 claims);
 
             var created = DateTime.UtcNow;

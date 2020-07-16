@@ -15,18 +15,27 @@ namespace ErrorCentral.WebAPI.Controllers
     public sealed class UserController : ControllerBase
     {
         private readonly ILoggedUserService _loggedUserService;
+        private readonly IUserService _userService;
 
-        public UserController(ILoggedUserService loggedUserService)
+        public UserController(ILoggedUserService loggedUserService, IUserService userService)
         {
             _loggedUserService = loggedUserService;
+            _userService = userService;
         }
 
         [HttpGet]
         public IActionResult Get()
         {
-            var user = _loggedUserService.GetLoggedUser<MyLoggedUser>();
+            var users = _userService.Get();
 
-            return Ok(user);
+            return Ok(users);
+        }
+        [HttpPost]
+        public IActionResult Save(User user)
+        {
+            var users = _userService.Save(user);
+
+            return Ok(users);
         }
     }
 }

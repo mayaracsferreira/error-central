@@ -5,11 +5,14 @@ using System.Reflection;
 using ErrorCentral.AppDomain.Interfaces;
 using ErrorCentral.AppDomain.Models;
 using ErrorCentral.AppDomain.Services;
+using ErrorCentral.Infrastructure.Context;
+using ErrorCentral.Infrastructure.Repository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -44,6 +47,10 @@ namespace ErrorCentral.WebAPI
             services.AddSingleton<AppDomain.Interfaces.IAuthorizationService, FakeAuthorizationService>();
             services.AddSingleton<ILoggedUserService, IdentityLoggedUserService>();
             services.AddControllers();
+            services.AddDbContext<EventContext>();
+
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
             services.AddAuthentication(opt =>
             {
