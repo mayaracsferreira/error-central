@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "M14qKoe0dc1pP+MygoXjmwLwW+56q2OW3W0ZXD3aiE9DdQW1nOPtbci1X39mh0xYwIut1v9VafFyxNgXZxDE4w==",
+  "dgSpecHash": "8SJuKWUgIx5J6iTCQ0jmzjvFC3htcyaljDfNqbGmgcPIxCZSq3nG6kV5wgNc/POJWaEDFTkj2Qo510Lfln0D6Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\Tabatha\\source\\repos\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.AppDomain\\ErrorCentral.AppDomain.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
+    "C:\\Users\\Tabatha\\.nuget\\packages\\microsoft.identitymodel.logging\\6.7.1\\microsoft.identitymodel.logging.6.7.1.nupkg.sha512",
+    "C:\\Users\\Tabatha\\.nuget\\packages\\microsoft.identitymodel.tokens\\6.7.1\\microsoft.identitymodel.tokens.6.7.1.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.security.cryptography.cng\\4.5.0\\system.security.cryptography.cng.4.5.0.nupkg.sha512"
+  ],
   "logs": []
 }

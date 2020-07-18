@@ -81,16 +81,40 @@ namespace ErrorCentral.WebAPI.Controllers
             }
         }
 
-        // PUT api/<EventLogController>/5
+        // PUT api/eventlog
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public ActionResult<EventLog> Put([FromBody] EventLog eventLog)
         {
+            var _event = _eventLogService.Atualizar(eventLog);
+            if(_event != null)
+            {
+                return Ok(_event);
+            }
+            else
+            {
+                return NoContent();
+            }
         }
 
-        // DELETE api/<EventLogController>/5
+        // DELETE api/eventlog/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public ActionResult<string> Delete(int id)
         {
+            var deletereturn = _eventLogService.Deletar(id);
+            if(deletereturn)
+            {
+                return Ok("Deleted Successfully");
+            }
+            else
+            {
+                return NoContent();
+            }
         }
     }
 }
