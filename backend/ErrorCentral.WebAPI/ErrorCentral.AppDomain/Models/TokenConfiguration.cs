@@ -1,32 +1,17 @@
-﻿using Microsoft.IdentityModel.Tokens;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Security.Cryptography;
 using System.Text;
 
-namespace Codenation.Domain.Entidades
+namespace ErrorCentral.AppDomain.Models
 {
-    public class TokenConfigurations
+    // These informations are setted in appsettings file
+    public sealed class TokenConfiguration
     {
-        public string Audience { get; set; }
-        public string Issuer { get; set; }
-        public int Seconds { get; set; }
-    }
-
-    public class SigningConfigurations
-    {
-        public SecurityKey Key { get; }
-        public SigningCredentials SigningCredentials { get; }
-
-        public SigningConfigurations()
-        {
-            using (var provider = new RSACryptoServiceProvider(2048))
-            {
-                Key = new RsaSecurityKey(provider.ExportParameters(true));
-            }
-
-            SigningCredentials = new SigningCredentials(
-                Key, SecurityAlgorithms.RsaSha256Signature);
-        }
+        public const string Policy = "Bearer";
+        public string ValidAudience { get; set; }
+        public string ValidIssuer { get; set; }
+        public int ExpirationInSeconds { get; set; }
+        public bool ValidateLifetime { get; set; }
+        public bool ValidateIssuerSigningKey { get; set; }
     }
 }

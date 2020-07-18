@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Tabatha\\source\\repos\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.AppDomain\\ErrorCentral.AppDomain.csproj": {}
+    "C:\\Users\\Mariana\\Desktop\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.AppDomain\\ErrorCentral.AppDomain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Tabatha\\source\\repos\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.AppDomain\\ErrorCentral.AppDomain.csproj": {
+    "C:\\Users\\Mariana\\Desktop\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.AppDomain\\ErrorCentral.AppDomain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Tabatha\\source\\repos\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.AppDomain\\ErrorCentral.AppDomain.csproj",
+        "projectUniqueName": "C:\\Users\\Mariana\\Desktop\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.AppDomain\\ErrorCentral.AppDomain.csproj",
         "projectName": "ErrorCentral.AppDomain",
-        "projectPath": "C:\\Users\\Tabatha\\source\\repos\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.AppDomain\\ErrorCentral.AppDomain.csproj",
-        "packagesPath": "C:\\Users\\Tabatha\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Tabatha\\source\\repos\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.AppDomain\\obj\\",
+        "projectPath": "C:\\Users\\Mariana\\Desktop\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.AppDomain\\ErrorCentral.AppDomain.csproj",
+        "packagesPath": "C:\\Users\\Mariana\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Mariana\\Desktop\\error-central\\backend\\ErrorCentral.WebAPI\\ErrorCentral.AppDomain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Tabatha\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Mariana\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -41,7 +41,19 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "Microsoft.AspNetCore.Http.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[6.7.1, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.3, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
               "version": "[6.7.1, )"
             }
@@ -61,7 +73,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.202\\RuntimeIdentifierGraph.json"
         }
       }
     }
