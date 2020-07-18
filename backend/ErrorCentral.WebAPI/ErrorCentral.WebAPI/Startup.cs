@@ -44,7 +44,6 @@ namespace ErrorCentral.WebAPI
 
             services.AddHttpContextAccessor();
             services.AddSingleton<IAuthenticationService, JwtIdentityAuthenticationService>();
-            services.AddSingleton<AppDomain.Interfaces.IAuthorizationService, FakeAuthorizationService>();
             services.AddSingleton<ILoggedUserService, IdentityLoggedUserService>();
             services.AddControllers();
             services.AddDbContext<EventContext>();

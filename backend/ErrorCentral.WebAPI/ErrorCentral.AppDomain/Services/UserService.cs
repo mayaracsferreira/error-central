@@ -60,5 +60,30 @@ namespace ErrorCentral.AppDomain.Services
                 throw e;
             }
         }
+        public BaseResult<IUser> Authorize(LoginUser loginUser)
+        {
+            User user = _userRepository.GetByEmail(loginUser.LoginOrEmail);
+
+            var result = new BaseResult<IUser>();
+
+            if (user.Password == loginUser.Password)
+            {
+                result.Success = true;
+                result.Message = "User authorized!";
+                result.Data = new User
+                {
+                    Id = user.Id,
+                    Name = user.Name,
+                    Email = user.Email
+                };
+            }
+            else
+            {
+                result.Success = false;
+                result.Message = "Not authorized!";
+            }
+
+            return result;
+        }
     }
 }

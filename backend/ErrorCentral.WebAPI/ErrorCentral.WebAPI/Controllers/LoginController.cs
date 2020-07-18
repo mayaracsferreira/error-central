@@ -10,14 +10,14 @@ namespace ErrorCentral.WebAPI.Controllers
     public sealed class LoginController : ControllerBase
     {
         private readonly IAuthenticationService _authenticationService;
-        private readonly AppDomain.Interfaces.IAuthorizationService _authorizationService;
+        private readonly IUserService _userService;
 
         public LoginController(
             IAuthenticationService authenticationService,
-            AppDomain.Interfaces.IAuthorizationService authorizationService)
+            IUserService userService)
         {
             _authenticationService = authenticationService;
-            _authorizationService = authorizationService;
+            _userService = userService;
         }
 
         [AllowAnonymous]
@@ -25,7 +25,7 @@ namespace ErrorCentral.WebAPI.Controllers
         public IActionResult Post([FromBody] LoginUser loginUser)
         {
             // Checks if login and user match
-            var authorization = _authorizationService.Authorize(loginUser);
+            var authorization = _userService.Authorize(loginUser);
             if (!authorization.Success)
             {
                 return Ok(authorization);
