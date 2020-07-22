@@ -29,6 +29,10 @@ namespace ErrorCentral.Infrastructure.Repository
         }
         public User Save(User user)
         {
+            if (GetByEmail(user.Email) != null)
+            {
+                throw new Exception("Usuário já cadastrado com esse email");
+            }
             // Encrypts user password
             user.Password = Md5Hash.Generate(user.Password);
             var state = user.Id == 0 ? EntityState.Added : EntityState.Modified;
