@@ -11,7 +11,6 @@ namespace ErrorCentral.WebAPI.Controllers
 {
     [Route("api/user")]
     [ApiController]
-    [Authorize("Bearer")]
     public sealed class UserController : ControllerBase
     {
         private readonly ILoggedUserService _loggedUserService;
@@ -24,6 +23,7 @@ namespace ErrorCentral.WebAPI.Controllers
         }
 
         [HttpGet]
+        [Authorize("Bearer")]
         public IActionResult Get()
         {
             var users = _userService.Get();

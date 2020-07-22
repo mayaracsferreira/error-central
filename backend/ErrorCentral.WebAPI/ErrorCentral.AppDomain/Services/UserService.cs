@@ -1,5 +1,6 @@
 ﻿using ErrorCentral.AppDomain.Interfaces;
 using ErrorCentral.AppDomain.Models;
+using ErrorCentral.AppDomain.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -60,13 +61,14 @@ namespace ErrorCentral.AppDomain.Services
                 throw e;
             }
         }
+
         public BaseResult<IUser> Authorize(LoginUser loginUser)
         {
             User user = _userRepository.GetByEmail(loginUser.LoginOrEmail);
 
             var result = new BaseResult<IUser>();
 
-            if (user.Password == loginUser.Password)
+            if (user.Password == Md5Hash.Generate(loginUser.Password))
             {
                 result.Success = true;
                 result.Message = "User authorized!";

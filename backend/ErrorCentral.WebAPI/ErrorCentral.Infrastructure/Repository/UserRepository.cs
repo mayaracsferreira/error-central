@@ -1,5 +1,6 @@
 ﻿using ErrorCentral.AppDomain.Interfaces;
 using ErrorCentral.AppDomain.Models;
+using ErrorCentral.AppDomain.Extensions;
 using ErrorCentral.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json.Serialization;
@@ -28,6 +29,8 @@ namespace ErrorCentral.Infrastructure.Repository
         }
         public User Save(User user)
         {
+            // Encrypts user password
+            user.Password = Md5Hash.Generate(user.Password);
             var state = user.Id == 0 ? EntityState.Added : EntityState.Modified;
             context.Entry(user).State = state;
             context.Add(user);
