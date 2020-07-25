@@ -6,6 +6,11 @@ on:
   pull_request:
     branches: [ devschema ]
 
+env:
+  AZURE_WEBAPP_NAME: errorcentral    # set this to your application's name
+  AZURE_WEBAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
+  DOTNET_VERSION: '3.1.201'           # set this to the dot net version to use
+
 jobs:
   build:
 
@@ -16,10 +21,24 @@ jobs:
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 3.1.301
+        dotnet-version: 3.1.101
     - name: Install dependencies
       run: dotnet restore
-    - name: Build
-      run: dotnet build --configuration Release --no-restore
-    - name: Test
-      run: dotnet test --no-restore --verbosity normal
+    - name: Build and Publish
+      run: |
+        dotnet build --configuration Release --no-restore
+        dotnet test --no-restore --verbosity normal
+        dotnet publish -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/output'
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v1
+      with:
+        name: artifact
+        path: output/
+
+    # Deploy to Azure Web apps
+    - name: 'Run Azure webapp deploy action using publish profile credentials'
+      uses: azure/webapps-deploy@v2
+      with: 
+        app-name: ${{ env.AZURE_WEBAPP_NAME }} # Replace with your app name
+        publish-profile: ${{ secrets.ERROR_CENTRAL }} # Define secret variable in repository settings as per action documentation
+        package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/output'
