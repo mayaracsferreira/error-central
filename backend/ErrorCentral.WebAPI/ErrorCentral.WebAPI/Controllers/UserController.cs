@@ -22,6 +22,11 @@ namespace ErrorCentral.WebAPI.Controllers
             _userService = userService;
         }
 
+        /// <summary>
+        /// Lista todos os usuários cadastrados no sistema
+        /// </summary>
+        /// <returns>Usuários cadastrados</returns>
+        /// <response code="200">Sucesso</response>
         [HttpGet]
         [Authorize("Bearer")]
         public IActionResult Get()
@@ -34,6 +39,13 @@ namespace ErrorCentral.WebAPI.Controllers
         public IActionResult Save(User user)
         {
             var users = _userService.Save(user);
+
+            return Ok(users);
+        }
+        [HttpPut]
+        public IActionResult Update(User user)
+        {
+            var users = _userService.Update(user);
 
             return Ok(users);
         }
