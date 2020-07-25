@@ -26,7 +26,9 @@ namespace ErrorCentral.WebAPI.Controllers
         /// Lista todos os usuários cadastrados no sistema
         /// </summary>
         /// <returns>Usuários cadastrados</returns>
-        /// <response code="200">Sucesso</response>
+        /// <response code="200">Listagem exibida com sucesso</response>
+        /// <response code="401">Não autorizado. Realizar login</response>
+        /// <response code="500">Não foi possível listar usuários</response> 
         [HttpGet]
         [Authorize("Bearer")]
         public IActionResult Get()
@@ -35,6 +37,26 @@ namespace ErrorCentral.WebAPI.Controllers
 
             return Ok(users);
         }
+
+        /// <summary>
+        /// Adiciona novo usuário que terá acesso ao sistema
+        /// </summary>
+        /// <remarks>
+        /// Exemplo:
+        ///
+        ///     POST
+        ///     {
+        ///        "name": "Mariana Tancredi"
+        ///        "email": "matancredi@hotmail.com",
+        ///        "senha": "senha"
+        ///     }
+        ///
+        /// </remarks>
+        /// <param name="string"></param>
+        /// <param email="string"></param>
+        /// <param senha="string"></param>
+        /// <response code="200">Usuário cadastrado com sucesso</response>
+        /// <response code="500">Não foi possível cadastrar usuário</response> 
         [HttpPost]
         public IActionResult Save(User user)
         {
@@ -42,8 +64,26 @@ namespace ErrorCentral.WebAPI.Controllers
 
             return Ok(users);
         }
+
+        /// <summary>
+        /// Troca a senha de um usuário dado seu e-mail e a senha nova. 
+        /// </summary>
+        /// <remarks>
+        /// Exemplo:
+        ///
+        ///     PUT
+        ///     {
+        ///        "email": "matancredi@hotmail.com",
+        ///        "senha": "nova_senha"
+        ///     }
+        ///
+        /// </remarks>
+        /// <param email="string"></param>
+        /// <param senha="string"></param>
+        /// <response code="200">Senha alterada com sucesso</response>
+        /// <response code="500">Não foi possível alterar a senha</response> 
         [HttpPut]
-        public IActionResult Update(User user)
+        public IActionResult ChangePassword(User user)
         {
             var users = _userService.Update(user);
 

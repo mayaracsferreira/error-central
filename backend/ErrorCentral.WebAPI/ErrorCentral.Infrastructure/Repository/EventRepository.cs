@@ -57,6 +57,10 @@ namespace ErrorCentral.Infrastructure.Repository
                 eventcontext.Entry(_event).State = EntityState.Modified;
                 eventcontext.SaveChanges();
             }
+            else
+            {
+                throw new Exception("Não foi possível encontrar log de erro com esse ID");
+            }
             return eventLog;
         }
     }

@@ -54,6 +54,11 @@ namespace ErrorCentral.Infrastructure.Repository
                 context.Entry(_user).State = EntityState.Modified;
                 context.SaveChanges();
             }
+            // Usuário não encontrado
+            else
+            {
+                throw new Exception("Não existe nenhum usuário cadastrado com esse email");
+            }
 
             return user;
         }

@@ -20,6 +20,23 @@ namespace ErrorCentral.WebAPI.Controllers
             _userService = userService;
         }
 
+        /// <summary>
+        /// Realiza login do usuário no sistema
+        /// </summary>
+        /// <remarks>
+        /// Exemplo:
+        ///
+        ///     POST
+        ///     {
+        ///        "email": "matancredi@hotmail.com",
+        ///        "senha": "senha"
+        ///     }
+        ///
+        /// </remarks>
+        /// <param email="string"></param>
+        /// <param senha="string"></param>
+        /// <response code="200">Login realizado com sucesso</response>
+        /// <response code="401">Não foi possível realizar login, confira os dados</response> 
         [AllowAnonymous]
         [HttpPost]
         public IActionResult Post([FromBody] LoginUser loginUser)

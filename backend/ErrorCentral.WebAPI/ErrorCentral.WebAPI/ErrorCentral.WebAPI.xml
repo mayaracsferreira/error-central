@@ -4,5 +4,108 @@
         <name>ErrorCentral.WebAPI</name>
     </assembly>
     <members>
+        <member name="M:ErrorCentral.WebAPI.Controllers.EventLogController.Get">
+            <summary>
+            Retorna todos os logs de erro armazenados no sistema
+            </summary>
+            <response code="200">Listagem feita com sucesso</response>
+            <response code="500">Não foi possível listar os erros</response> 
+        </member>
+        <member name="M:ErrorCentral.WebAPI.Controllers.EventLogController.Get(System.Int32)">
+            <summary>
+            Retorna todos detalhes de um log de erro dado id
+            </summary>
+            <response code="200">Erro retornado com sucesso</response>
+            <response code="500">Não foi possível retornar o erro</response> 
+        </member>
+        <member name="M:ErrorCentral.WebAPI.Controllers.EventLogController.Post(ErrorCentral.AppDomain.Models.EventLog)">
+            <summary>
+            Insere um novo log de erro no sistema
+            </summary>
+            <response code="200">Log de erro inserido com sucesso</response>
+            <response code="500">Não foi possível inserir o log de erro</response> 
+        </member>
+        <member name="M:ErrorCentral.WebAPI.Controllers.EventLogController.Put(ErrorCentral.AppDomain.Models.EventLog)">
+            <summary>
+            Altera dados de algum log de erro já cadastrado, pode ser usado para arquivar um log
+            </summary>
+            <response code="200">Operação feita com sucesso</response>
+            <response code="500">Não foi possível concluir a operação</response> 
+        </member>
+        <member name="M:ErrorCentral.WebAPI.Controllers.EventLogController.Delete(System.Int32)">
+            <summary>
+            Deleta um dado log de erro
+            </summary>
+            <response code="200">Operação feita com sucesso</response>
+            <response code="500">Não foi possível concluir a operação</response> 
+        </member>
+        <member name="M:ErrorCentral.WebAPI.Controllers.LoginController.Post(LoginUser)">
+             <summary>
+             Realiza login do usuário no sistema
+             </summary>
+             <remarks>
+             Exemplo:
+            
+                 POST
+                 {
+                    "email": "matancredi@hotmail.com",
+                    "senha": "senha"
+                 }
+            
+             </remarks>
+             <param email="string"></param>
+             <param senha="string"></param>
+             <response code="200">Login realizado com sucesso</response>
+             <response code="401">Não foi possível realizar login, confira os dados</response> 
+        </member>
+        <member name="M:ErrorCentral.WebAPI.Controllers.UserController.Get">
+            <summary>
+            Lista todos os usuários cadastrados no sistema
+            </summary>
+            <returns>Usuários cadastrados</returns>
+            <response code="200">Listagem exibida com sucesso</response>
+            <response code="401">Não autorizado. Realizar login</response>
+            <response code="500">Não foi possível listar usuários</response> 
+        </member>
+        <member name="M:ErrorCentral.WebAPI.Controllers.UserController.Save(ErrorCentral.AppDomain.Models.User)">
+             <summary>
+             Adiciona novo usuário que terá acesso ao sistema
+             </summary>
+             <remarks>
+             Exemplo:
+            
+                 POST
+                 {
+                    "name": "Mariana Tancredi"
+                    "email": "matancredi@hotmail.com",
+                    "senha": "senha"
+                 }
+            
+             </remarks>
+             <param name="string"></param>
+             <param email="string"></param>
+             <param senha="string"></param>
+             <response code="200">Usuário cadastrado com sucesso</response>
+             <response code="500">Não foi possível cadastrar usuário</response> 
+        </member>
+        <member name="M:ErrorCentral.WebAPI.Controllers.UserController.ChangePassword(ErrorCentral.AppDomain.Models.User)">
+             <summary>
+             Troca a senha de um usuário dado seu e-mail e a senha nova. 
+             </summary>
+             <remarks>
+             Exemplo:
+            
+                 PUT
+                 {
+                    "email": "matancredi@hotmail.com",
+                    "senha": "nova_senha"
+                 }
+            
+             </remarks>
+             <param email="string"></param>
+             <param senha="string"></param>
+             <response code="200">Senha alterada com sucesso</response>
+             <response code="500">Não foi possível alterar a senha</response> 
+        </member>
     </members>
 </doc>
