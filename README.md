@@ -15,7 +15,6 @@ Cada tarefa é documentada em uma issue que será atribuída a um membro do grup
 - Entity FrameWork Core
 - JWT
 - Azure
-...
 
 ### Parceria
 [ClearSale](https://br.clear.sale/)
@@ -28,3 +27,5 @@ Cada tarefa é documentada em uma issue que será atribuída a um membro do grup
 
 ### Mentoria 
 [Ingrid Oliveira](https://github.com/ingrid139)
+
+
