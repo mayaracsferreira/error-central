@@ -24,7 +24,7 @@ namespace ErrorCentral.AppDomain.Services
             }
             catch (Exception e)
             {
-                return new List<EventLog>();
+                throw e;
             }
         }
 
@@ -34,9 +34,9 @@ namespace ErrorCentral.AppDomain.Services
             {
                 return _eventlogRepository.GetById(ID);
             }
-            catch
+            catch (Exception e)
             {
-                return null;
+                throw e;
             }
         }
         public EventLog Salvar(EventLog eventLog)
@@ -45,9 +45,9 @@ namespace ErrorCentral.AppDomain.Services
             {
                 return _eventlogRepository.Save(eventLog);
             }
-            catch
+            catch (Exception e)
             {
-                return null;
+                throw e;
             }
         }
         public EventLog Atualizar(EventLog eventLog)
@@ -56,9 +56,9 @@ namespace ErrorCentral.AppDomain.Services
             {
                 return _eventlogRepository.Update(eventLog);
             }
-            catch
+            catch (Exception e)
             {
-                return null;
+                throw e;
             }
         }
 
@@ -68,9 +68,9 @@ namespace ErrorCentral.AppDomain.Services
             {
                 return _eventlogRepository.Delete(ID);
             }
-            catch
+            catch (Exception e)
             {
-                return false;
+                throw e;
             }
 
         }

@@ -39,7 +39,7 @@ namespace ErrorCentral.WebAPI.Controllers
         }
 
         /// <summary>
-        /// Adiciona novo usuário que terá acesso ao sistema
+        /// Adiciona novo usuário que terá acesso ao sistema.
         /// </summary>
         /// <remarks>
         /// Exemplo:
@@ -51,11 +51,13 @@ namespace ErrorCentral.WebAPI.Controllers
         ///        "senha": "senha"
         ///     }
         ///
+        /// Email precisa ser válido e senha tem que ter no mínimo 6 caracteres.
         /// </remarks>
         /// <param name="string"></param>
         /// <param email="string"></param>
         /// <param senha="string"></param>
         /// <response code="200">Usuário cadastrado com sucesso</response>
+        /// <response code="400">Confira os dados de cadastro</response>
         /// <response code="500">Não foi possível cadastrar usuário</response> 
         [HttpPost]
         public IActionResult Save(User user)

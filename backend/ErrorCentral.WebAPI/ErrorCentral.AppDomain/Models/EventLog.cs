@@ -31,9 +31,9 @@ namespace ErrorCentral.AppDomain.Models
         [Column("Origin", TypeName = "nvarchar(255)"), Required]
         public string Origin { get; set; }
 
+        // Ambiente em que o erro foi capturad: pode ser dev, homologação ou produção
         [Column("Environment", TypeName = "nvarchar(255)"), Required]
-        public string Environment { get; set; }
-
+        public EnvironmentEnum Environment { get; set; }
 
         // O tipo booleano não existe no Sql Server.
         [Column("Archived", TypeName = "bit"), Required]
