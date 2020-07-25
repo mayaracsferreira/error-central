@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using ErrorCentral.Infra.Data.Exceptions;
 
 namespace ErrorCentral.Infrastructure.Repository
 {
@@ -21,17 +22,28 @@ namespace ErrorCentral.Infrastructure.Repository
 
         public List<User> Get()
         {
-            return context.Users.ToList();
+            List<User> users = context.Users.ToList();
+            if (users == null)
+            {
+                throw new UserNotFoundException("Ainda não há usuários cadastrados");
+            }
+            return users;
         }
         public User GetByEmail(string email)
         {
-            return context.Users.Where(x => x.Email == email).FirstOrDefault();
+            User user = context.Users.Where(x => x.Email == email).FirstOrDefault();
+            if (user == null)
+            {
+                throw new UserNotFoundException("Não foi possível encontrar usuário com o e-mail informado");
+            }
+            return user;
         }
+
         public User Save(User user)
         {
             if (GetByEmail(user.Email) != null)
             {
-                throw new Exception("Usuário já cadastrado com esse email");
+                throw new EmailAlreadyExistsException("Email já está em uso");
             }
             // Encrypts user password
             user.Password = Md5Hash.Generate(user.Password);
@@ -41,6 +53,7 @@ namespace ErrorCentral.Infrastructure.Repository
             context.SaveChanges();
             return user;
         }
+
         public User Update(User user)
         {
             var _user = context.Users.Where(x => x.Email == user.Email).FirstOrDefault();
@@ -57,7 +70,7 @@ namespace ErrorCentral.Infrastructure.Repository
             // Usuário não encontrado
             else
             {
-                throw new Exception("Não existe nenhum usuário cadastrado com esse email");
+                throw new UserNotFoundException("Usuário não encontrado");
             }
 
             return user;

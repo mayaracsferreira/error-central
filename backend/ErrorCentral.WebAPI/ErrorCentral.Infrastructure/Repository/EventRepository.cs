@@ -1,5 +1,6 @@
 ﻿using ErrorCentral.AppDomain.Interfaces;
 using ErrorCentral.AppDomain.Models;
+using ErrorCentral.Infra.Data.Exceptions;
 using ErrorCentral.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -26,17 +27,28 @@ namespace ErrorCentral.Infrastructure.Repository
                 eventcontext.SaveChanges();
                 return true;
             }
-            return false;
+            throw new EventLogNotFoundException("Não foi possível encontrar log com esse id");
+            // return false;
         }
 
         public IEnumerable<EventLog> Get()
         {
-            return eventcontext.EventLogs;
+            IEnumerable<EventLog> logs = eventcontext.EventLogs;
+            if (logs == null)
+            {
+                throw new EventLogNotFoundException("Não existem logs cadastrados");
+            }
+            return logs;
         }
 
         public EventLog GetById(int Id)
         {
-            return eventcontext.EventLogs.Where(x => x.EventID == Id).FirstOrDefault();
+            EventLog log = eventcontext.EventLogs.Where(x => x.EventID == Id).FirstOrDefault();
+            if (log == null)
+            {
+                throw new EventLogNotFoundException("Não foram encontrados logs com o id informado");
+            }
+            return log;
         }
 
         public EventLog Save(EventLog eventLog)
@@ -50,8 +62,7 @@ namespace ErrorCentral.Infrastructure.Repository
 
         public EventLog Update(EventLog eventLog)
         {
-            var _event = eventcontext.EventLogs.Where(x => x.EventID == eventLog.EventID)
-                .FirstOrDefault();
+            var _event = eventcontext.EventLogs.Where(x => x.EventID == eventLog.EventID).FirstOrDefault();
             if (_event != null){
                 _event.Title = eventLog.Title;
                 eventcontext.Entry(_event).State = EntityState.Modified;
@@ -59,7 +70,7 @@ namespace ErrorCentral.Infrastructure.Repository
             }
             else
             {
-                throw new Exception("Não foi possível encontrar log de erro com esse ID");
+                throw new EventLogNotFoundException("Não foi possível encontrar log de erro com esse ID");
             }
             return eventLog;
         }
