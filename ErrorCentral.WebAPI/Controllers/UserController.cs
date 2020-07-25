@@ -21,7 +21,7 @@ namespace ErrorCentral.WebAPI.Controllers
             _loggedUserService = loggedUserService;
             _userService = userService;
         }
-
+         
         /// <summary>
         /// Lista todos os usuários cadastrados no sistema
         /// </summary>
@@ -89,7 +89,7 @@ namespace ErrorCentral.WebAPI.Controllers
         {
             var users = _userService.Update(user);
 
-            return Ok(users);
+            return Ok(users); 
         }
     }
 }
