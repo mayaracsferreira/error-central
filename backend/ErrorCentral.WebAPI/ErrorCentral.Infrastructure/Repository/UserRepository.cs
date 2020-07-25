@@ -48,6 +48,7 @@ namespace ErrorCentral.Infrastructure.Repository
             if (_user != null)
             {
                 // When user forgets the password, he can change it by sending the email
+                user.Password = Md5Hash.Generate(user.Password);
                 _user.Password = user.Password;
 
                 context.Entry(_user).State = EntityState.Modified;
