@@ -11,7 +11,9 @@ namespace ErrorCentral.AppDomain.Interfaces
         EventLog GetById(int Id);
         EventLog Save(EventLog eventLog);
         EventLog Update(EventLog eventLog);
-
+       IList<EventLog> GetByLevel(string level);
+       IList<EventLog> GetByOrigin(string origin);
+        
         bool Delete(int ID);
 
     }

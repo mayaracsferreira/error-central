@@ -28,14 +28,38 @@ namespace ErrorCentral.WebAPI.Controllers
         /// </summary>
         /// <response code="200">Listagem feita com sucesso</response>
         /// <response code="500">Não foi possível listar os erros</response> 
-        [HttpGet]
+        [HttpGet("level")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
 
+
+        public ActionResult<List<EventLog>> Get(string level)
+        {
+            var eventLog = _eventLogService.EventLogsLevel(level);
+            if (eventLog != null)
+            {
+                return Ok(eventLog);
+            }
+            else
+            {
+                return NoContent();
+            }
+
+        }
+        // GET: api/<EventLogController>
+        /// <summary>
+        /// Retorna todos os logs de erro armazenados no sistema
+        /// </summary>
+        /// <response code="200">Listagem feita com sucesso</response>
+        /// <response code="500">Não foi possível listar os erros</response> 
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public ActionResult<IEnumerable<EventLog>> Get()
         {
-            var eventLog = _eventLogService.EventLogs().ToList();
+            var eventLog = _eventLogService.EventLogsLevel().ToList();
 
             if (eventLog.Any())
             {

@@ -9,8 +9,9 @@ namespace ErrorCentral.AppDomain.Interfaces
     {
 
         //services de teste, checar com a Ingrid.
-        IList<EventLog> EventLogs();
+        IList<EventLog> EventLogsLevel();
         EventLog EventLogID(int ID);
+        IList<EventLog> EventLogsLevel(string level);
         EventLog Salvar(EventLog eventLog);
         EventLog Atualizar(EventLog eventLog);
         bool Deletar(int ID);

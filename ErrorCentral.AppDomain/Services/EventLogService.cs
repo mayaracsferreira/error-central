@@ -16,7 +16,7 @@ namespace ErrorCentral.AppDomain.Services
             _eventlogRepository = eventRepository;
         }
 
-        public IList<EventLog> EventLogs()
+        public IList<EventLog> EventLogsLevel()
         {
             try
             {

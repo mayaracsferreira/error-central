@@ -18,6 +18,28 @@ namespace ErrorCentral.Infrastructure.Repository
             this.eventcontext = eventcontext;
         }
 
+        public IList<EventLog> GetByLevel(string level)
+        {
+            var _event = eventcontext.EventLogs.Where(x => x.Level == level)
+                .Distinct()
+                .ToList();
+            if(_event == null)
+            {
+                throw new EventLogNotFoundException("Não existem logs cadastrados");
+            }
+            return _event;
+        }
+        public IList<EventLog> GetByOrigin(string origin)
+        {
+            var _event = eventcontext.EventLogs.Where(x => x.Origin == origin)
+                .Distinct()
+                .ToList();
+            if (_event == null)
+            {
+                throw new EventLogNotFoundException("Não existem logs cadastrados");
+            }
+            return _event;
+        }
         public bool Delete(int ID)
         {
             var _event = eventcontext.EventLogs.Where(x => x.EventID == ID).FirstOrDefault();
