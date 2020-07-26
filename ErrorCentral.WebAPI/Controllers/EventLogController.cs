@@ -28,7 +28,7 @@ namespace ErrorCentral.WebAPI.Controllers
         /// </summary>
         /// <response code="200">Listagem feita com sucesso</response>
         /// <response code="500">Não foi possível listar os erros</response> 
-        [HttpGet("level")]
+        [HttpPut("level")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
