@@ -4,13 +4,6 @@
         <name>ErrorCentral.WebAPI</name>
     </assembly>
     <members>
-        <member name="M:ErrorCentral.WebAPI.Controllers.EventLogController.Get">
-            <summary>
-            Retorna todos os logs de erro armazenados no sistema
-            </summary>
-            <response code="200">Listagem feita com sucesso</response>
-            <response code="500">Não foi possível listar os erros</response> 
-        </member>
         <member name="M:ErrorCentral.WebAPI.Controllers.EventLogController.Get(System.Int32)">
             <summary>
             Retorna todos detalhes de um log de erro dado id

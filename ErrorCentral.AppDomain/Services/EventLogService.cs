@@ -16,17 +16,7 @@ namespace ErrorCentral.AppDomain.Services
             _eventlogRepository = eventRepository;
         }
 
-        public IList<EventLog> EventLogsLevel()
-        {
-            try
-            {
-                return _eventlogRepository.Get().ToList();
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
+       
 
         public EventLog EventLogID(int ID)
         {
