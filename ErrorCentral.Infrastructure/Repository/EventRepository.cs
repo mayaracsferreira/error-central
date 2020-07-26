@@ -63,6 +63,45 @@ namespace ErrorCentral.Infrastructure.Repository
             return logs;
         }
 
+        public List<EventLog> GetFilters(string environment, string orderBy, string searchFor, string field)
+        {
+            List<EventLog> events = eventcontext.EventLogs.ToList();
+            if (environment != null)
+            {
+                events = events.Where(x => x.Environment == environment).ToList();
+            }
+            if (orderBy != null)
+            {
+                switch (orderBy.ToLower())
+                {
+                    case "level":
+                        events = events.OrderBy(x => x.Level).ToList();
+                        break;
+                    //case "frequencia":
+                    default:
+                        throw new FilterException("Só é possível ordenar por level ou por frequência");
+                }
+            }
+            if (searchFor!= null && field != null)
+            {
+                switch (searchFor.ToLower())
+                {
+                    case "level":
+                        events = events.Where(x => x.Level == field).ToList();
+                        break;
+                    case "descrição":
+                        events = events.Where(x => x.Description == field).ToList();
+                        break;
+                    case "origem":
+                        events = events.Where(x => x.Origin == field).ToList();
+                        break;
+                    default:
+                        throw new FilterException("Só é possível procurar por level, descrição ou origem");
+                }
+            }
+            return events;
+        }
+
         public EventLog GetById(int Id)
         {
             EventLog log = eventcontext.EventLogs.Where(x => x.EventID == Id).FirstOrDefault();

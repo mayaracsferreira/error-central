@@ -16,5 +16,7 @@ namespace ErrorCentral.AppDomain.Interfaces
         
         bool Delete(int ID);
 
+        List<EventLog> GetFilters(string environment, string orderBy, string searchFor, string field);
+
     }
 }

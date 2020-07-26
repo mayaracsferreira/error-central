@@ -22,8 +22,30 @@ namespace ErrorCentral.WebAPI.Controllers
             _eventLogService = eventLogService;
         }
 
-       
-     
+        // GET: api/<EventLogController>
+        /// <summary>
+        /// Retorna todos os logs de erro armazenados no sistema
+        /// </summary>
+        /// <response code="200">Listagem feita com sucesso</response>
+        /// <response code="500">Não foi possível listar os erros</response> 
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+
+        public ActionResult Get()
+        {
+            var eventLog = _eventLogService.EventLogs().ToList();
+
+            if (eventLog.Any())
+            {
+                return Ok(eventLog);
+            }
+            else
+            {
+                return NoContent();
+            }
+        }
 
         // GET ex.: api/eventlog/5
         /// <summary>
@@ -43,6 +65,26 @@ namespace ErrorCentral.WebAPI.Controllers
             if (eventLog != null)
             {
                 return Ok(eventLog);
+            }
+            else
+            {
+                return NoContent();
+            }
+        }
+
+        /// <summary>
+        /// Filtra os dados de acordo com os parâmetros dados pelo usuário
+        /// </summary>
+        /// <response code="200">Listagem de erros feita com sucesso</response>
+        /// <response code="500">Não foi possível retornar a listagem filtrada</response> 
+        [HttpGet("filters")]
+        public ActionResult Get (string environment, string orderBy, string searchFor, string field)
+        {
+            List<EventLog> events = _eventLogService.Filtrar(environment, orderBy, searchFor, field);
+
+            if (events != null)
+            {
+                return Ok(events);
             }
             else
             {

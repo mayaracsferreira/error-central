@@ -15,8 +15,17 @@ namespace ErrorCentral.AppDomain.Services
         {
             _eventlogRepository = eventRepository;
         }
-
-       
+        public IList<EventLog> EventLogs()
+        {
+            try
+            {
+                return _eventlogRepository.Get().ToList();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
 
         public EventLog EventLogID(int ID)
         {
@@ -63,6 +72,17 @@ namespace ErrorCentral.AppDomain.Services
                 throw e;
             }
 
+        }
+        public List<EventLog> Filtrar(string environment, string orderBy, string searchFor, string field)
+        {
+            try
+            {
+                return _eventlogRepository.GetFilters(environment, orderBy, searchFor, field);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
     }
 }
