@@ -1,4 +1,5 @@
 ﻿using ErrorCentral.AppDomain.Models;
+using ErrorCentral.Infra.Data.Seed;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -15,10 +16,7 @@ namespace ErrorCentral.Infrastructure.Context
         {
             if (!optionsBuilder.IsConfigured)
             {
-                //Essa parte, por favor, evitem rodar kkk
-                // A não ser que troque para o data Source do banco de vocês
-                //PRESTE ATENÇÃO, SUSCETIVEL A ACONTECER MERDA
-                //vou colocar o meu, desculpa se eu esquecer e subir com ele 
+                //Configurações do banco de dados
                 optionsBuilder.UseSqlServer("Data Source=tcp:errorcentralproject.database.windows.net,1433;Initial Catalog=ErrorCentral;Persist Security Info=False;User ID=admerrorcentral;Password=Squad1errorcentral;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             }
 
@@ -27,8 +25,7 @@ namespace ErrorCentral.Infrastructure.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            
-
+            modelBuilder.Seed();
         }
     }
 }
