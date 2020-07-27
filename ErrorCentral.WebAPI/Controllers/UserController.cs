@@ -51,7 +51,7 @@ namespace ErrorCentral.WebAPI.Controllers
         ///        "senha": "senha"
         ///     }
         ///
-        /// Email precisa ser válido e senha tem que ter no mínimo 6 caracteres.
+        /// Email precisa estar em um formato válido.
         /// </remarks>
         /// <param name="string"></param>
         /// <param email="string"></param>

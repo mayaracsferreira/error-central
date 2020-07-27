@@ -15,7 +15,6 @@ namespace ErrorCentral.AppDomain.Models
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Senha do usuário é obrigatória.")]
-        [StringLength(6)]
         public string Password { get; set; }
     }
 }

@@ -41,7 +41,8 @@ namespace ErrorCentral.Infrastructure.Repository
 
         public User Save(User user)
         {
-            if (GetByEmail(user.Email) != null)
+            User u = context.Users.Where(x => x.Email == user.Email).FirstOrDefault();
+            if (u != null)
             {
                 throw new EmailAlreadyExistsException("Email já está em uso");
             }

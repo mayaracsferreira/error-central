@@ -8,15 +8,6 @@ namespace ErrorCentral.Infra.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<string>(
-                name: "Password",
-                table: "Users",
-                maxLength: 6,
-                nullable: false,
-                oldClrType: typeof(string),
-                oldType: "nvarchar(max)",
-                oldNullable: true);
-
-            migrationBuilder.AlterColumn<string>(
                 name: "Name",
                 table: "Users",
                 nullable: false,
@@ -281,14 +272,6 @@ namespace ErrorCentral.Infra.Data.Migrations
                 table: "EventLog",
                 keyColumn: "ID",
                 keyValue: 1040);
-
-            migrationBuilder.AlterColumn<string>(
-                name: "Password",
-                table: "Users",
-                type: "nvarchar(max)",
-                nullable: true,
-                oldClrType: typeof(string),
-                oldMaxLength: 6);
 
             migrationBuilder.AlterColumn<string>(
                 name: "Name",

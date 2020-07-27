@@ -614,7 +614,7 @@ namespace ErrorCentral.Infra.Data.Migrations
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasColumnType("nvarchar(6)")
+                        .HasColumnType("nvarchar(max)")
                         .HasMaxLength(6);
 
                     b.HasKey("Id");
