@@ -21,6 +21,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
+using AutoMapper;
 
 namespace ErrorCentral.WebAPI
 {
@@ -58,6 +59,13 @@ namespace ErrorCentral.WebAPI
             services.AddSingleton<ILoggedUserService, IdentityLoggedUserService>();
             services.AddControllers();
             services.AddDbContext<EventContext>();
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new AutoMapperProfile());
+            });
+
+            IMapper mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
             services.AddScoped<IEventLogService, EventLogService>();
             services.AddScoped<IEventLogRepository, EventRepository>();
 

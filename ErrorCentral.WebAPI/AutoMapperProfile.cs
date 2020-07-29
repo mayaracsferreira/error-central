@@ -12,7 +12,7 @@ namespace ErrorCentral.WebAPI
     {
        public AutoMapperProfile()
         {
-            CreateMap<EventLog, EventLogDTO>().ReverseMap();
+            CreateMap<EventLog, EventFilterDTO>().ReverseMap();
         }
     }
 }

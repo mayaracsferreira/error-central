@@ -1,4 +1,5 @@
-﻿using ErrorCentral.AppDomain.Models;
+﻿using ErrorCentral.AppDomain.DTO;
+using ErrorCentral.AppDomain.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,7 +13,7 @@ namespace ErrorCentral.AppDomain.Interfaces
         EventLog Salvar(EventLog eventLog);
         EventLog Atualizar(EventLog eventLog);
         bool Deletar(int ID);
-        List<EventLog> Filtrar(string environment, string orderBy, string searchFor, string field);
+        List<EventFilterDTO> Filtrar(string environment, string orderBy, string searchFor, string field);
 
     }
 }

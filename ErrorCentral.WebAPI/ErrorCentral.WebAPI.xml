@@ -22,6 +22,15 @@
             <summary>
             Filtra os dados de acordo com os parâmetros dados pelo usuário
             </summary>
+            <remarks>
+            Enviroment can be: production, homologation or development
+            
+            OrderBy can be: level or frequency (group by same description frequency)
+            
+            SearchFor can be: level, description or origin
+            
+            Field: Send the text you want to search in searchfor chosen option
+            </remarks>
             <response code="200">Listagem de erros feita com sucesso</response>
             <response code="500">Não foi possível retornar a listagem filtrada</response> 
         </member>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ErrorCentral.AppDomain.DTO;
 using ErrorCentral.AppDomain.Interfaces;
 using ErrorCentral.AppDomain.Models;
 using Microsoft.AspNetCore.Http;
@@ -75,12 +76,21 @@ namespace ErrorCentral.WebAPI.Controllers
         /// <summary>
         /// Filtra os dados de acordo com os parâmetros dados pelo usuário
         /// </summary>
+        /// <remarks>
+        /// Enviroment can be: production, homologation or development
+        /// 
+        /// OrderBy can be: level or frequency (group by same description frequency)
+        /// 
+        /// SearchFor can be: level, description or origin
+        /// 
+        /// Field: Send the text you want to search in searchfor chosen option
+        /// </remarks>
         /// <response code="200">Listagem de erros feita com sucesso</response>
         /// <response code="500">Não foi possível retornar a listagem filtrada</response> 
         [HttpGet("filters")]
         public ActionResult Get (string environment, string orderBy, string searchFor, string field)
         {
-            List<EventLog> events = _eventLogService.Filtrar(environment, orderBy, searchFor, field);
+            List<EventFilterDTO> events = _eventLogService.Filtrar(environment, orderBy, searchFor, field);
 
             if (events != null)
             {

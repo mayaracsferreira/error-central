@@ -1,4 +1,5 @@
-﻿using ErrorCentral.AppDomain.Interfaces;
+﻿using ErrorCentral.AppDomain.DTO;
+using ErrorCentral.AppDomain.Interfaces;
 using ErrorCentral.AppDomain.Models;
 using System;
 using System.Collections.Generic;
@@ -73,7 +74,7 @@ namespace ErrorCentral.AppDomain.Services
             }
 
         }
-        public List<EventLog> Filtrar(string environment, string orderBy, string searchFor, string field)
+        public List<EventFilterDTO> Filtrar(string environment, string orderBy, string searchFor, string field)
         {
             try
             {

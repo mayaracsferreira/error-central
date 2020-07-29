@@ -1,4 +1,6 @@
-﻿using ErrorCentral.AppDomain.Interfaces;
+﻿using AutoMapper;
+using ErrorCentral.AppDomain.DTO;
+using ErrorCentral.AppDomain.Interfaces;
 using ErrorCentral.AppDomain.Models;
 using ErrorCentral.Infra.Data.Exceptions;
 using ErrorCentral.Infrastructure.Context;
@@ -13,9 +15,11 @@ namespace ErrorCentral.Infrastructure.Repository
     public class EventRepository : IEventLogRepository
     {
         private readonly EventContext eventcontext;
-        public EventRepository(EventContext eventcontext)
+        private IMapper mapper;
+        public EventRepository(EventContext eventcontext, IMapper mapper)
         {
             this.eventcontext = eventcontext;
+            this.mapper = mapper;
         }
 
         public IList<EventLog> GetByLevel(string level)
@@ -63,43 +67,62 @@ namespace ErrorCentral.Infrastructure.Repository
             return logs;
         }
 
-        public List<EventLog> GetFilters(string environment, string orderBy, string searchFor, string field)
+        public List<EventFilterDTO> GetFilters(string environment, string orderBy, string searchFor, string field)
         {
             List<EventLog> events = eventcontext.EventLogs.ToList();
+            //var b = events;
+
+            var eventsGrouped = events.GroupBy(x => x.Description).Select(group => new
+            {
+                Description = group.Key,
+                Count = group.Count()
+            }).OrderBy(x => x.Count);
+
+            List<EventFilterDTO> eventsDTO = new List<EventFilterDTO>();
+
+            foreach (EventLog evt in events)
+            {
+                EventFilterDTO eventDTO = mapper.Map<EventFilterDTO>(evt);
+                eventDTO.Frequency = eventsGrouped.Where(e => e.Description == eventDTO.Description).Select(e => e.Count).FirstOrDefault();
+                eventsDTO.Add(eventDTO);
+            }
+
             if (environment != null)
             {
-                events = events.Where(x => x.Environment == environment).ToList();
-            }
-            if (orderBy != null)
-            {
-                switch (orderBy.ToLower())
-                {
-                    case "level":
-                        events = events.OrderBy(x => x.Level).ToList();
-                        break;
-                    //case "frequencia":
-                    default:
-                        throw new FilterException("Só é possível ordenar por level ou por frequência");
-                }
+                eventsDTO = eventsDTO.Where(x => x.Environment.Contains(environment)).ToList();
             }
             if (searchFor!= null && field != null)
             {
                 switch (searchFor.ToLower())
                 {
                     case "level":
-                        events = events.Where(x => x.Level == field).ToList();
+                        eventsDTO = eventsDTO.Where(x => x.Level.ToLower().Contains(field.ToLower())).ToList();
                         break;
-                    case "descrição":
-                        events = events.Where(x => x.Description == field).ToList();
+                    case "description":
+                        eventsDTO = eventsDTO.Where(x => x.Description.ToLower().Contains(field.ToLower())).ToList();
                         break;
-                    case "origem":
-                        events = events.Where(x => x.Origin == field).ToList();
+                    case "origin":
+                        eventsDTO = eventsDTO.Where(x => x.Origin.ToLower().Contains(field.ToLower())).ToList();
                         break;
                     default:
                         throw new FilterException("Só é possível procurar por level, descrição ou origem");
                 }
             }
-            return events;
+            if (orderBy != null)
+            {
+                switch (orderBy.ToLower())
+                {
+                    case "level":
+                        eventsDTO = eventsDTO.OrderBy(x => x.Level).ToList();
+                        break;
+                    case "frequency":
+                        eventsDTO = eventsDTO.OrderBy(x => x.Frequency).ThenBy(x => x.Description).ToList();
+                        break;
+                    default:
+                        throw new FilterException("Só é possível ordenar por level ou por frequência");
+                }
+            }
+            return eventsDTO;
         }
 
         public EventLog GetById(int Id)
@@ -126,6 +149,7 @@ namespace ErrorCentral.Infrastructure.Repository
             var _event = eventcontext.EventLogs.Where(x => x.EventID == eventLog.EventID).FirstOrDefault();
             if (_event != null){
                 _event.Title = eventLog.Title;
+                _event.Archived = eventLog.Archived;
                 eventcontext.Entry(_event).State = EntityState.Modified;
                 eventcontext.SaveChanges();
             }
