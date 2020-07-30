@@ -11,7 +11,7 @@ namespace ErrorCentral.AppDomain.Interfaces
         IEnumerable<EventLog> Get();
         EventLog GetById(int Id);
         EventLog Save(EventLog eventLog);
-        EventLog Update(EventLog eventLog);
+        EventLog Update(int id, EventLog eventLog);
        IList<EventLog> GetByLevel(string level);
        //IList<EventLog> GetByOrigin(string origin);
         

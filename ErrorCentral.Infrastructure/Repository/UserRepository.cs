@@ -55,9 +55,9 @@ namespace ErrorCentral.Infrastructure.Repository
             return user;
         }
 
-        public User Update(User user)
+        public User Update(LoginUser user)
         {
-            var _user = context.Users.Where(x => x.Email == user.Email).FirstOrDefault();
+            var _user = context.Users.Where(x => x.Email == user.LoginOrEmail).FirstOrDefault();
 
             if (_user != null)
             {
@@ -74,7 +74,7 @@ namespace ErrorCentral.Infrastructure.Repository
                 throw new UserNotFoundException("Usuário não encontrado");
             }
 
-            return user;
+            return _user;
         }
     }
 }

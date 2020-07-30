@@ -41,7 +41,7 @@
             <response code="200">Log de erro inserido com sucesso</response>
             <response code="500">Não foi possível inserir o log de erro</response> 
         </member>
-        <member name="M:ErrorCentral.WebAPI.Controllers.EventLogController.Put(ErrorCentral.AppDomain.Models.EventLog)">
+        <member name="M:ErrorCentral.WebAPI.Controllers.EventLogController.Put(System.Int32,ErrorCentral.AppDomain.Models.EventLog)">
             <summary>
             Altera dados de algum log de erro já cadastrado, pode ser usado para arquivar um log
             </summary>
@@ -106,7 +106,7 @@
              <response code="400">Confira os dados de cadastro</response>
              <response code="500">Não foi possível cadastrar usuário</response> 
         </member>
-        <member name="M:ErrorCentral.WebAPI.Controllers.UserController.ChangePassword(ErrorCentral.AppDomain.Models.User)">
+        <member name="M:ErrorCentral.WebAPI.Controllers.UserController.ChangePassword(LoginUser)">
              <summary>
              Troca a senha de um usuário dado seu e-mail e a senha nova. 
              </summary>

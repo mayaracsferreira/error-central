@@ -144,9 +144,9 @@ namespace ErrorCentral.Infrastructure.Repository
             return eventLog;
         }
 
-        public EventLog Update(EventLog eventLog)
+        public EventLog Update(int id, EventLog eventLog)
         {
-            var _event = eventcontext.EventLogs.Where(x => x.EventID == eventLog.EventID).FirstOrDefault();
+            var _event = eventcontext.EventLogs.Where(x => x.EventID == id).FirstOrDefault();
             if (_event != null){
                 _event.Title = eventLog.Title;
                 _event.Archived = eventLog.Archived;
@@ -157,7 +157,7 @@ namespace ErrorCentral.Infrastructure.Repository
             {
                 throw new EventLogNotFoundException("Não foi possível encontrar log de erro com esse ID");
             }
-            return eventLog;
+            return _event;
         }
     }
 }

@@ -11,6 +11,6 @@ namespace ErrorCentral.AppDomain.Interfaces
         List<User> Get();
         User GetByEmail(string Email);
         User Save(User user);
-        User Update(User user);
+        User Update(LoginUser user);
     }
 }
