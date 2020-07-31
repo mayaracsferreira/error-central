@@ -38,7 +38,7 @@ namespace ErrorCentral.WebAPI.Controllers
         /// <response code="500">Não foi possível listar usuários</response> 
         [HttpGet]
         [Authorize("Bearer")]
-        public IActionResult Get()
+        public IActionResult GetAll()
         {
             var users = _userService.Get();
 
