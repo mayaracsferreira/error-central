@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using ErrorCentral.AppDomain.DTO;
 using ErrorCentral.AppDomain.Interfaces;
 using ErrorCentral.AppDomain.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,6 +15,7 @@ namespace ErrorCentral.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize("Bearer")]
     public class EventLogController : ControllerBase
     {
         private readonly IEventLogService _eventLogService;
@@ -59,7 +61,7 @@ namespace ErrorCentral.WebAPI.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
 
-        public ActionResult<EventLog> Get(int id)
+        public ActionResult<EventLog> GetAll(int id)
         {
             var eventLog = _eventLogService.EventLogID(id);
 
@@ -112,18 +114,11 @@ namespace ErrorCentral.WebAPI.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult<EventLog> Post([FromBody] EventLog eventLog)
+        public IActionResult Post([FromBody] EventLog eventLog)
         {
             var _eventlog = _eventLogService.Salvar(eventLog);
 
-            if (eventLog != null)
-            {
-                return Ok(eventLog);
-            }
-            else
-            {
-                return NoContent();
-            }
+            return Ok(_eventlog);
         }
 
         // PUT api/eventlog
@@ -136,9 +131,9 @@ namespace ErrorCentral.WebAPI.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult<EventLog> Put([FromBody] EventLog eventLog)
+        public ActionResult<EventLog> Put(int id, [FromBody] EventLog eventLog)
         {
-            var _event = _eventLogService.Atualizar(eventLog);
+            var _event = _eventLogService.Atualizar(id, eventLog);
             if(_event != null)
             {
                 return Ok(_event);

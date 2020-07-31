@@ -50,7 +50,7 @@ namespace ErrorCentral.AppDomain.Services
                 throw e;
             }
         }
-        public User Update(User user)
+        public User Update(LoginUser user)
         {
             try
             {

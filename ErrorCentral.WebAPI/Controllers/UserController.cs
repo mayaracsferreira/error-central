@@ -16,11 +16,18 @@ namespace ErrorCentral.WebAPI.Controllers
         private readonly ILoggedUserService _loggedUserService;
         private readonly IUserService _userService;
 
+        public UserController(IUserService userService)
+        {
+            _userService = userService;
+        }
+
+        /*
         public UserController(ILoggedUserService loggedUserService, IUserService userService)
         {
             _loggedUserService = loggedUserService;
             _userService = userService;
         }
+        */
          
         /// <summary>
         /// Lista todos os usuários cadastrados no sistema
@@ -31,7 +38,7 @@ namespace ErrorCentral.WebAPI.Controllers
         /// <response code="500">Não foi possível listar usuários</response> 
         [HttpGet]
         [Authorize("Bearer")]
-        public IActionResult Get()
+        public IActionResult GetAll()
         {
             var users = _userService.Get();
 
@@ -85,7 +92,7 @@ namespace ErrorCentral.WebAPI.Controllers
         /// <response code="200">Senha alterada com sucesso</response>
         /// <response code="500">Não foi possível alterar a senha</response> 
         [HttpPut]
-        public IActionResult ChangePassword(User user)
+        public IActionResult ChangePassword([FromBody] LoginUser user)
         {
             var users = _userService.Update(user);
 

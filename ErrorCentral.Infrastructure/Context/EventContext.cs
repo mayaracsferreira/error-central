@@ -9,6 +9,15 @@ namespace ErrorCentral.Infrastructure.Context
 {
     public class EventContext : DbContext
     {
+        private DbContextOptions<EventContext> options;
+
+        public EventContext() { }
+
+        public EventContext(DbContextOptions<EventContext> options)
+        {
+            this.options = options;
+        }
+
         public DbSet<User> Users { get; set; }
         public DbSet<EventLog> EventLogs { get; set; }
 
