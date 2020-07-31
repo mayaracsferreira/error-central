@@ -2,9 +2,9 @@ name: .NET Core
 
 on:
   push:
-    branches: [ devschema ]
+    branches: [ master ]
   pull_request:
-    branches: [ devschema ]
+    branches: [ master ]
 
 env:
   AZURE_WEBAPP_NAME: errorcentral    # set this to your application's name
