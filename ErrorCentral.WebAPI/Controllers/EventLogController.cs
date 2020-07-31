@@ -36,7 +36,7 @@ namespace ErrorCentral.WebAPI.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
 
-        public ActionResult Get()
+        public ActionResult GetAll()
         {
             var eventLog = _eventLogService.EventLogs().ToList();
 
@@ -61,7 +61,7 @@ namespace ErrorCentral.WebAPI.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
 
-        public ActionResult<EventLog> GetAll(int id)
+        public ActionResult<EventLog> Get(int id)
         {
             var eventLog = _eventLogService.EventLogID(id);
 
