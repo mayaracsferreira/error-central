@@ -144,12 +144,11 @@ namespace ErrorCentral.Infrastructure.Repository
             return eventLog;
         }
 
-        public EventLog Update(int id, EventLog eventLog)
+        public EventLog Archive(int id)
         {
             var _event = eventcontext.EventLogs.Where(x => x.EventID == id).FirstOrDefault();
             if (_event != null){
-                _event.Title = eventLog.Title;
-                _event.Archived = eventLog.Archived;
+                _event.Archived = true;
                 eventcontext.Entry(_event).State = EntityState.Modified;
                 eventcontext.SaveChanges();
             }

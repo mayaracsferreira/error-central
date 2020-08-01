@@ -50,11 +50,11 @@ namespace ErrorCentral.AppDomain.Services
                 throw e;
             }
         }
-        public EventLog Atualizar(int id, EventLog eventLog)
+        public EventLog Arquivar(int id)
         {
             try
             {
-                return _eventlogRepository.Update(id, eventLog);
+                return _eventlogRepository.Archive(id);
             }
             catch (Exception e)
             {
