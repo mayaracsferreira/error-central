@@ -1,6 +1,7 @@
 ﻿using ErrorCentral.AppDomain.Models;
 using ErrorCentral.Infra.Data.Seed;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -26,7 +27,12 @@ namespace ErrorCentral.Infrastructure.Context
             if (!optionsBuilder.IsConfigured)
             {
                 //Configurações do banco de dados
-                optionsBuilder.UseSqlServer("Data Source=tcp:errorcentralproject.database.windows.net,1433;Initial Catalog=ErrorCentral;Persist Security Info=False;User ID=admerrorcentral;Password=Squad1errorcentral;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+                var builder = new ConfigurationBuilder()
+               .AddJsonFile("appsettings.json");
+
+                var config = builder.Build();
+                optionsBuilder.UseSqlServer(config["ConnectionStrings:DefaultConnection"]);
+                //optionsBuilder.UseSqlServer(DbConfiguration.ConnectionString);
             }
 
             base.OnConfiguring(optionsBuilder);
