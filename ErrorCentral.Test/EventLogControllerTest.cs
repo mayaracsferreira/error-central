@@ -67,29 +67,36 @@ namespace ErrorCentral.Test
             }
         }
 
-        [Fact]
-        public void IdGet_WhenCalled_ReturnsOkOrNoContent()
-        {
-            throw new NotImplementedException(); //in progress
-        }
+        //[Fact]
+        //public void IdGet_WhenCalled_ReturnsOkOrNoContent()
+        //{
+        //    REQUIRES ID ALWAYS VALID AND ANOTHER ID ALWAYS INVALID
+        //}
 
-        [Fact]
-        public void IdGet_WhenOk_ReturnsContent()
-        {
-            throw new NotImplementedException(); //in progress
-        }
+        //[Fact]
+        //public void IdGet_WhenOk_ReturnsContent()
+        //{
+        //    throw new NotImplementedException();
+        //    REQUIRES build test eventlog with fixed Id that responds to controller
+        //}
 
-        [Fact]
-        public void FiltersGet_WhenCalled_ReturnsOkOrNoContent()
-        {
-            throw new NotImplementedException(); //in progress
-        }
+        //[Fact]
+        //public void FiltersGet_WhenFindFiltered_ReturnsOk()
+        //{
+        //    throw new NotImplementedException(); //in progress
+        //}
 
-        [Fact]
-        public void FiltersGet_WhenOk_ReturnsContent()
-        {
-            throw new NotImplementedException(); //in progress
-        }
+        //[Fact]
+        //public void FiltersGet_WhenNoFiltered_ReturnsNoContent()
+        //{
+        //    throw new NotImplementedException(); //in progress
+        //}
+
+        //[Fact]
+        //public void FiltersGet_WhenOk_ReturnsContent()
+        //{
+        //    throw new NotImplementedException(); //in progress
+        //}
 
 
 
@@ -98,6 +105,7 @@ namespace ErrorCentral.Test
         {
             var log = new EventLog()
             {
+                EventID = 0,
                 Level = "ERROR",
                 Title = "development.StaticOperation.Service: <failed>",
                 CollectedBy = "yvqnygr3i1xl47wanrg2",
