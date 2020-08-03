@@ -3,6 +3,7 @@ using ErrorCentral.AppDomain.Interfaces;
 using ErrorCentral.AppDomain.Models;
 using ErrorCentral.AppDomain.Services;
 using ErrorCentral.Infra.Data.Exceptions;
+using ErrorCentral.Infrastructure.Context;
 using ErrorCentral.Infrastructure.Repository;
 using ErrorCentral.WebAPI;
 using ErrorCentral.WebAPI.Controllers;
@@ -21,6 +22,7 @@ namespace ErrorCentral.Test
         private readonly EventLogController _controller;
         private readonly IEventLogRepository _repository;
         private readonly IEventLogService _service;
+        private readonly EventContext _context;
 
         public EventLogControllerTest()
         {
@@ -32,10 +34,67 @@ namespace ErrorCentral.Test
             _repository = new EventRepository(DbContext, mappingConfig.CreateMapper());
             _service = new EventLogService(_repository);
             _controller = new EventLogController(_service);
+            _context = new EventContext();
+        }
+
+
+        [Fact]
+        public void GetAll_WhenCalled_ReturnsOkOrNoContent()
+        {
+            var eventLogs = _service.EventLogs().ToList();
+            var okResult = _controller.GetAll();
+
+            if (eventLogs.Any())
+            {
+                Assert.IsType<OkObjectResult>(okResult);
+            }
+            else
+            {
+                Assert.IsType<NoContentResult>(okResult);
+            }
         }
 
         [Fact]
-        public void ShouldCreateNewEventLog()
+        public void GetAll_WhenOk_ReturnsEventLogList()
+        {
+            var eventLogs = _service.EventLogs().ToList();
+            if (eventLogs.Any())
+            {
+                var okResult = _controller.GetAll() as OkObjectResult;
+                var items = Assert.IsType<List<EventLog>>(okResult.Value);
+
+                Assert.Equal(_context.EventLogs.Count(), items.Count());
+            }
+        }
+
+        [Fact]
+        public void IdGet_WhenCalled_ReturnsOkOrNoContent()
+        {
+            throw new NotImplementedException(); //in progress
+        }
+
+        [Fact]
+        public void IdGet_WhenOk_ReturnsContent()
+        {
+            throw new NotImplementedException(); //in progress
+        }
+
+        [Fact]
+        public void FiltersGet_WhenCalled_ReturnsOkOrNoContent()
+        {
+            throw new NotImplementedException(); //in progress
+        }
+
+        [Fact]
+        public void FiltersGet_WhenOk_ReturnsContent()
+        {
+            throw new NotImplementedException(); //in progress
+        }
+
+
+
+        [Fact]
+        public void Post_WhenCalled_ReturnsOk ()
         {
             var log = new EventLog()
             {
@@ -52,7 +111,6 @@ namespace ErrorCentral.Test
 
             Assert.IsType<OkObjectResult>(okResult);
         }
-
     }
 
 }

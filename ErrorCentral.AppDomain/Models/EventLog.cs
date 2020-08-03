@@ -31,7 +31,7 @@ namespace ErrorCentral.AppDomain.Models
         [Column("Origin", TypeName = "nvarchar(255)"), Required]
         public string Origin { get; set; }
 
-        // Ambiente em que o erro foi capturad: pode ser dev, homologação ou produção
+        // Ambiente em que o erro foi capturado: pode ser dev, homologação ou produção
         [Column("Environment", TypeName = "nvarchar(255)"), Required]
         public string Environment { get; set; }
 
