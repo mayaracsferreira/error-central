@@ -62,6 +62,7 @@ namespace ErrorCentral.WebAPI
             var mappingConfig = new MapperConfiguration(mc =>
             {
                 mc.AddProfile(new AutoMapperProfile());
+                mc.AddProfile(new EventMapperProfile());                
             });
 
             IMapper mapper = mappingConfig.CreateMapper();

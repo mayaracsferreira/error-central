@@ -85,5 +85,18 @@ namespace ErrorCentral.AppDomain.Services
                 throw e;
             }
         }
+
+        public List<EventLogDTO> BuscarPorCampo(string searchFor, string field)
+        {
+            try
+            {
+                return _eventlogRepository.SearchForField(searchFor, field);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }            
+        }
+
     }
 }

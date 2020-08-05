@@ -14,6 +14,6 @@ namespace ErrorCentral.AppDomain.Interfaces
         EventLog Archive(int id);
         bool Delete(int ID);
         List<EventFilterDTO> GetFilters(string environment, string orderBy, string searchFor, string field);
-
+        List<EventLogDTO> SearchForField(string searchFor, string field);
     }
 }

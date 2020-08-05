@@ -6,7 +6,7 @@ namespace ErrorCentral.AppDomain.DTO
 {
     public class EventFilterDTO
     {
-        public int EventId { get; set; }
+        public int EventID { get; set; }
         public string Description { get; set; }
         public string Level { get; set; }
         public string Title { get; set; }

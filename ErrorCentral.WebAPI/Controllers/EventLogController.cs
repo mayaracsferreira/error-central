@@ -78,7 +78,7 @@ namespace ErrorCentral.WebAPI.Controllers
         }
 
         /// <summary>
-        /// Filtra os dados de acordo com os parâmetros dados pelo usuário
+        /// Filtra e agrupa os dados de acordo com os parâmetros dados pelo usuário
         /// </summary>
         /// <remarks>
         /// Enviroment can be: production, homologation or development
@@ -106,6 +106,33 @@ namespace ErrorCentral.WebAPI.Controllers
                 return NoContent();
             }
         }
+
+        /// <summary>
+        /// Busca os dados de acordo com os parâmetros dados pelo usuário
+        /// </summary>
+        /// <remarks>        
+        /// SearchFor can be: level, description or origin
+        /// 
+        /// Field: Send the text you want to search in searchfor chosen option
+        /// </remarks>
+        /// <response code="200">Listagem de erros feita com sucesso</response>
+        /// <response code="401">Não autorizado. Realizar login</response>
+        /// <response code="500">Não foi possível retornar a listagem filtrada</response> 
+        [HttpGet("search/{searchFor}/{field}")]
+        public ActionResult Search(string searchFor, string field)
+        {
+            List<EventLogDTO> events = _eventLogService.BuscarPorCampo(searchFor, field);
+
+            if (events != null)
+            {
+                return Ok(events);
+            }
+            else
+            {
+                return NoContent();
+            }
+        }
+        
 
         // POST api/<EventLogController>
         /// <summary>
