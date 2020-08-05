@@ -53,8 +53,7 @@ namespace ErrorCentral.Infrastructure.Repository
                 eventcontext.SaveChanges();
                 return true;
             }
-            throw new EventLogNotFoundException("Não foi possível encontrar log com esse id");
-            // return false;
+            return false;
         }
 
         public IEnumerable<EventLog> Get()
