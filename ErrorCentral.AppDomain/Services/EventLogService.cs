@@ -50,11 +50,11 @@ namespace ErrorCentral.AppDomain.Services
                 throw e;
             }
         }
-        public EventLog Atualizar(int id, EventLog eventLog)
+        public EventLog Arquivar(int id)
         {
             try
             {
-                return _eventlogRepository.Update(id, eventLog);
+                return _eventlogRepository.Archive(id);
             }
             catch (Exception e)
             {
@@ -85,5 +85,18 @@ namespace ErrorCentral.AppDomain.Services
                 throw e;
             }
         }
+
+        public List<EventLogDTO> BuscarPorCampo(string searchFor, string field)
+        {
+            try
+            {
+                return _eventlogRepository.SearchForField(searchFor, field);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }            
+        }
+
     }
 }

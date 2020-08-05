@@ -27,7 +27,7 @@ namespace ErrorCentral.Infrastructure.Repository
             var _event = eventcontext.EventLogs.Where(x => x.Level == level)
                 .Distinct()
                 .ToList();
-            if(_event == null)
+            if (_event == null)
             {
                 throw new EventLogNotFoundException("Não existem logs cadastrados");
             }
@@ -47,7 +47,7 @@ namespace ErrorCentral.Infrastructure.Repository
         public bool Delete(int ID)
         {
             var _event = eventcontext.EventLogs.Where(x => x.EventID == ID).FirstOrDefault();
-            if( _event != null)
+            if (_event != null)
             {
                 eventcontext.Entry(_event).State = EntityState.Deleted;
                 eventcontext.SaveChanges();
@@ -90,7 +90,7 @@ namespace ErrorCentral.Infrastructure.Repository
             {
                 eventsDTO = eventsDTO.Where(x => x.Environment.Contains(environment)).ToList();
             }
-            if (searchFor!= null && field != null)
+            if (searchFor != null && field != null)
             {
                 switch (searchFor.ToLower())
                 {
@@ -124,6 +124,39 @@ namespace ErrorCentral.Infrastructure.Repository
             return eventsDTO;
         }
 
+
+        public List<EventLogDTO> SearchForField(string searchFor, string field)
+        {
+            List<EventLog> events = eventcontext.EventLogs.ToList();
+
+
+            List<EventLogDTO> eventsDTO = new List<EventLogDTO>();
+            foreach (EventLog evt in events)
+            {
+                EventLogDTO eventDTO = mapper.Map<EventLogDTO>(evt);
+                eventsDTO.Add(eventDTO);
+            }
+
+            if (searchFor != null && field != null)
+            {
+                switch (searchFor.ToLower())
+                {
+                    case "level":
+                        eventsDTO = eventsDTO.Where(x => x.Level.ToLower().Contains(field.ToLower())).ToList();
+                        break;
+                    case "description":
+                        eventsDTO = eventsDTO.Where(x => x.Description.ToLower().Contains(field.ToLower())).ToList();
+                        break;
+                    case "origin":
+                        eventsDTO = eventsDTO.Where(x => x.Origin.ToLower().Contains(field.ToLower())).ToList();
+                        break;
+                    default:
+                        throw new FilterException("Só é possível procurar por level, descrição ou origem");
+                }
+            }
+            return eventsDTO;
+        }
+
         public EventLog GetById(int Id)
         {
             EventLog log = eventcontext.EventLogs.Where(x => x.EventID == Id).FirstOrDefault();
@@ -143,12 +176,12 @@ namespace ErrorCentral.Infrastructure.Repository
             return eventLog;
         }
 
-        public EventLog Update(int id, EventLog eventLog)
+        public EventLog Archive(int id)
         {
             var _event = eventcontext.EventLogs.Where(x => x.EventID == id).FirstOrDefault();
-            if (_event != null){
-                _event.Title = eventLog.Title;
-                _event.Archived = eventLog.Archived;
+            if (_event != null)
+            {
+                _event.Archived = true;
                 eventcontext.Entry(_event).State = EntityState.Modified;
                 eventcontext.SaveChanges();
             }

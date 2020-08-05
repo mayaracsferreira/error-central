@@ -10,7 +10,7 @@ namespace ErrorCentral.AppDomain.Interfaces
         BaseResult<IUser> Authorize(LoginUser loginUser);
         List<User> Get();
         User GetByEmail(string Email);
-        User Save(User user);
+        bool Save(User user);
         User Update(LoginUser user);
     }
 }

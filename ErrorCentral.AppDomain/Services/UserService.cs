@@ -39,7 +39,7 @@ namespace ErrorCentral.AppDomain.Services
                 throw e;
             }
         }
-        public User Save(User user)
+        public bool Save(User user)
         {
             try
             {
