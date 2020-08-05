@@ -191,5 +191,22 @@ namespace ErrorCentral.Infrastructure.Repository
             }
             return _event;
         }
+
+        public EventLog Update(int id, EventLog eventLog)
+        {
+            var _event = eventcontext.EventLogs.Where(x => x.EventID == id).FirstOrDefault();
+            if (_event != null)
+            {
+                _event.Title = eventLog.Title;
+                _event.Archived = eventLog.Archived;                
+                eventcontext.Entry(_event).State = EntityState.Modified;
+                eventcontext.SaveChanges();
+            }
+            else
+            {
+                throw new EventLogNotFoundException("Não foi possível encontrar log de erro com esse ID");
+            }
+            return _event;
+        }
     }
 }

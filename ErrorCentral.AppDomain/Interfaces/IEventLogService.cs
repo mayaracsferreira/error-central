@@ -11,6 +11,7 @@ namespace ErrorCentral.AppDomain.Interfaces
         IList<EventLog> EventLogs();
         EventLog EventLogID(int ID);
         EventLog Salvar(EventLog eventLog);
+        EventLog Atualizar(int id, EventLog eventLog);
         EventLog Arquivar(int id);
         bool Deletar(int ID);
         List<EventFilterDTO> Filtrar(string environment, string orderBy, string searchFor, string field);

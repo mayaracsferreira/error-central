@@ -66,6 +66,14 @@
             <response code="401">Não autorizado. Realizar login</response>
             <response code="500">Não foi possível concluir a operação</response> 
         </member>
+        <member name="M:ErrorCentral.WebAPI.Controllers.EventLogController.Put(System.Int32,ErrorCentral.AppDomain.Models.EventLog)">
+            <summary>
+            Arquiva um dado log de erro 
+            </summary>
+            <response code="200">Operação feita com sucesso</response>
+            <response code="401">Não autorizado. Realizar login</response>
+            <response code="500">Não foi possível concluir a operação</response> 
+        </member>
         <member name="M:ErrorCentral.WebAPI.Controllers.EventLogController.Delete(System.Int32)">
             <summary>
             Deleta um dado log de erro

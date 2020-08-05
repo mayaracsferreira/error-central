@@ -95,8 +95,19 @@ namespace ErrorCentral.AppDomain.Services
             catch (Exception e)
             {
                 throw e;
-            }            
+            }
         }
 
+        public EventLog Atualizar(int id, EventLog eventLog)
+        {
+            try
+            {
+                return _eventlogRepository.Update(id, eventLog);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
     }
 }

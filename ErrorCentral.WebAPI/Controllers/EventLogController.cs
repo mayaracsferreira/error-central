@@ -159,7 +159,7 @@ namespace ErrorCentral.WebAPI.Controllers
         /// <response code="200">Operação feita com sucesso</response>
         /// <response code="401">Não autorizado. Realizar login</response>
         /// <response code="500">Não foi possível concluir a operação</response> 
-        [HttpPut("{id}")]
+        [HttpPut("arquivar/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -167,6 +167,30 @@ namespace ErrorCentral.WebAPI.Controllers
         {
             var _event = _eventLogService.Arquivar(id);
             if(_event != null)
+            {
+                return Ok(_event);
+            }
+            else
+            {
+                return NoContent();
+            }
+        }
+
+        // PUT api/eventlog
+        /// <summary>
+        /// Arquiva um dado log de erro 
+        /// </summary>
+        /// <response code="200">Operação feita com sucesso</response>
+        /// <response code="401">Não autorizado. Realizar login</response>
+        /// <response code="500">Não foi possível concluir a operação</response> 
+        [HttpPut("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public ActionResult<EventLog> Put(int id, [FromBody] EventLog eventLog)
+        {
+            var _event = _eventLogService.Atualizar(id, eventLog);
+            if (_event != null)
             {
                 return Ok(_event);
             }

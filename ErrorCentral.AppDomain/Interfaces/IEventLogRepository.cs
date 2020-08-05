@@ -11,6 +11,7 @@ namespace ErrorCentral.AppDomain.Interfaces
         IEnumerable<EventLog> Get();
         EventLog GetById(int Id);
         EventLog Save(EventLog eventLog);
+        EventLog Update(int id, EventLog eventLog);
         EventLog Archive(int id);
         bool Delete(int ID);
         List<EventFilterDTO> GetFilters(string environment, string orderBy, string searchFor, string field);
