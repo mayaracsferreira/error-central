@@ -66,6 +66,49 @@ namespace ErrorCentral.Infrastructure.Repository
             return logs;
         }
 
+        public List<EventFilterDTO> GroupEvents(string environment, string orderBy)
+        {
+            List<EventLog> events = eventcontext.EventLogs.ToList();
+            //var b = events;
+
+            var eventsGrouped = events.GroupBy(x => x.Description).Select(group => new
+            {
+                Description = group.Key,
+                Count = group.Count()
+            }).OrderBy(x => x.Count);
+
+            List<EventFilterDTO> eventsDTO = new List<EventFilterDTO>();
+
+            foreach (EventLog evt in events)
+            {
+                EventFilterDTO eventDTO = mapper.Map<EventFilterDTO>(evt);
+                eventDTO.Frequency = eventsGrouped.Where(e => e.Description == eventDTO.Description).Select(e => e.Count).FirstOrDefault();
+                eventsDTO.Add(eventDTO);
+            }
+
+            if (environment != null)
+            {
+                eventsDTO = eventsDTO.Where(x => x.Environment.Contains(environment)).ToList();
+            }
+            
+            if (orderBy != null)
+            {
+                switch (orderBy.ToLower())
+                {
+                    case "level":
+                        eventsDTO = eventsDTO.OrderBy(x => x.Level).ToList();
+                        break;
+                    case "frequency":
+                        eventsDTO = eventsDTO.OrderBy(x => x.Frequency).ThenBy(x => x.Description).ToList();
+                        break;
+                    default:
+                        throw new FilterException("Só é possível ordenar por level ou por frequência");
+                }
+            }
+            return eventsDTO;
+        }
+
+
         public List<EventFilterDTO> GetFilters(string environment, string orderBy, string searchFor, string field)
         {
             List<EventLog> events = eventcontext.EventLogs.ToList();

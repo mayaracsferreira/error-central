@@ -37,6 +37,20 @@
             <response code="401">Não autorizado. Realizar login</response>
             <response code="500">Não foi possível retornar a listagem filtrada</response> 
         </member>
+        <member name="M:ErrorCentral.WebAPI.Controllers.EventLogController.Agrupar(System.String,System.String)">
+            <summary>
+            Agrupa e ordena os dados de acordo com os parâmetros dados pelo usuário
+            </summary>
+            <remarks>
+            Enviroment can be: production, homologation or development
+            
+            OrderBy can be: level or frequency (group by same description frequency)
+            
+            </remarks>
+            <response code="200">Listagem de erros feita com sucesso</response>
+            <response code="401">Não autorizado. Realizar login</response>
+            <response code="500">Não foi possível retornar a listagem filtrada</response> 
+        </member>
         <member name="M:ErrorCentral.WebAPI.Controllers.EventLogController.Search(System.String,System.String)">
             <summary>
             Busca os dados de acordo com os parâmetros dados pelo usuário

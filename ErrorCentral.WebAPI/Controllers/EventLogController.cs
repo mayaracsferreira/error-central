@@ -92,10 +92,37 @@ namespace ErrorCentral.WebAPI.Controllers
         /// <response code="200">Listagem de erros feita com sucesso</response>
         /// <response code="401">Não autorizado. Realizar login</response>
         /// <response code="500">Não foi possível retornar a listagem filtrada</response> 
-        [HttpGet("filters")]
+        [HttpGet("filters/{environment}/{orderBy}/{searchFor}/{field}")]
         public ActionResult Get (string environment, string orderBy, string searchFor, string field)
         {
             List<EventFilterDTO> events = _eventLogService.Filtrar(environment, orderBy, searchFor, field);
+
+            if (events != null)
+            {
+                return Ok(events);
+            }
+            else
+            {
+                return NoContent();
+            }
+        }
+
+        /// <summary>
+        /// Agrupa e ordena os dados de acordo com os parâmetros dados pelo usuário
+        /// </summary>
+        /// <remarks>
+        /// Enviroment can be: production, homologation or development
+        /// 
+        /// OrderBy can be: level or frequency (group by same description frequency)
+        /// 
+        /// </remarks>
+        /// <response code="200">Listagem de erros feita com sucesso</response>
+        /// <response code="401">Não autorizado. Realizar login</response>
+        /// <response code="500">Não foi possível retornar a listagem filtrada</response> 
+        [HttpGet("groupBy/{environment}/{orderBy}")]
+        public ActionResult Agrupar(string environment, string orderBy)
+        {
+            List<EventFilterDTO> events = _eventLogService.Agrupar(environment, orderBy);
 
             if (events != null)
             {

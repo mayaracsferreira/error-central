@@ -74,6 +74,19 @@ namespace ErrorCentral.AppDomain.Services
             }
 
         }
+
+        public List<EventFilterDTO> Agrupar(string environment, string orderBy)
+        {
+            try
+            {
+                return _eventlogRepository.GroupEvents(environment, orderBy);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
         public List<EventFilterDTO> Filtrar(string environment, string orderBy, string searchFor, string field)
         {
             try
