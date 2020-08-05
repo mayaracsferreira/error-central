@@ -27,5 +27,15 @@ namespace ErrorCentral.Test
         //public void Post_WhenUserServiceCheck_Authorize
         //{
         //}
+
+        //[Fact]
+        //public void Post_WhenAuthServiceCheck_Authenticate
+        //{
+        //}
+
+        //[Fact]
+        //public void Post_WhenCalled_ReturnsOk
+        //{
+        //}
     }
 }

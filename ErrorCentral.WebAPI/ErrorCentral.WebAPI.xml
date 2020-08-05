@@ -4,7 +4,7 @@
         <name>ErrorCentral.WebAPI</name>
     </assembly>
     <members>
-        <member name="M:ErrorCentral.WebAPI.Controllers.EventLogController.Get">
+        <member name="M:ErrorCentral.WebAPI.Controllers.EventLogController.GetAll">
             <summary>
             Retorna todos os logs de erro armazenados no sistema
             </summary>
@@ -74,7 +74,7 @@
              <response code="200">Login realizado com sucesso</response>
              <response code="401">Não foi possível realizar login, confira os dados</response> 
         </member>
-        <member name="M:ErrorCentral.WebAPI.Controllers.UserController.Get">
+        <member name="M:ErrorCentral.WebAPI.Controllers.UserController.GetAll">
             <summary>
             Lista todos os usuários cadastrados no sistema
             </summary>
