@@ -205,7 +205,7 @@ namespace ErrorCentral.WebAPI.Controllers
 
         // PUT api/eventlog
         /// <summary>
-        /// Arquiva um dado log de erro 
+        /// Atualiza um dado log de erro 
         /// </summary>
         /// <response code="200">Operação feita com sucesso</response>
         /// <response code="401">Não autorizado. Realizar login</response>
