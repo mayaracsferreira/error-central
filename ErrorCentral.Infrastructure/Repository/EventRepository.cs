@@ -58,12 +58,11 @@ namespace ErrorCentral.Infrastructure.Repository
 
         public IEnumerable<EventLog> Get()
         {
-            IEnumerable<EventLog> logs = eventcontext.EventLogs;
-            if (logs == null)
+            if (eventcontext.EventLogs.Any())
             {
-                throw new EventLogNotFoundException("Não existem logs cadastrados");
+                return eventcontext.EventLogs.ToList();
             }
-            return logs;
+            throw new EventLogNotFoundException("Não existem logs cadastrados");
         }
 
         public List<EventFilterDTO> GetFilters(string environment, string orderBy, string searchFor, string field)
