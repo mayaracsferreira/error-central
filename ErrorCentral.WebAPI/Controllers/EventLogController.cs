@@ -30,6 +30,7 @@ namespace ErrorCentral.WebAPI.Controllers
         /// Retorna todos os logs de erro armazenados no sistema
         /// </summary>
         /// <response code="200">Listagem feita com sucesso</response>
+        /// <response code="401">Não autorizado. Realizar login</response>
         /// <response code="500">Não foi possível listar os erros</response> 
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -55,6 +56,7 @@ namespace ErrorCentral.WebAPI.Controllers
         /// Retorna todos detalhes de um log de erro dado id
         /// </summary>
         /// <response code="200">Erro retornado com sucesso</response>
+        /// <response code="401">Não autorizado. Realizar login</response>
         /// <response code="500">Não foi possível retornar o erro</response> 
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -76,7 +78,7 @@ namespace ErrorCentral.WebAPI.Controllers
         }
 
         /// <summary>
-        /// Filtra os dados de acordo com os parâmetros dados pelo usuário
+        /// Filtra e agrupa os dados de acordo com os parâmetros dados pelo usuário
         /// </summary>
         /// <remarks>
         /// Enviroment can be: production, homologation or development
@@ -88,8 +90,9 @@ namespace ErrorCentral.WebAPI.Controllers
         /// Field: Send the text you want to search in searchfor chosen option
         /// </remarks>
         /// <response code="200">Listagem de erros feita com sucesso</response>
+        /// <response code="401">Não autorizado. Realizar login</response>
         /// <response code="500">Não foi possível retornar a listagem filtrada</response> 
-        [HttpGet("filters")]
+        [HttpGet("filters/{environment}/{orderBy}/{searchFor}/{field}")]
         public ActionResult Get (string environment, string orderBy, string searchFor, string field)
         {
             List<EventFilterDTO> events = _eventLogService.Filtrar(environment, orderBy, searchFor, field);
@@ -104,11 +107,66 @@ namespace ErrorCentral.WebAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Agrupa e ordena os dados de acordo com os parâmetros dados pelo usuário
+        /// </summary>
+        /// <remarks>
+        /// Enviroment can be: production, homologation or development
+        /// 
+        /// OrderBy can be: level or frequency (group by same description frequency)
+        /// 
+        /// </remarks>
+        /// <response code="200">Listagem de erros feita com sucesso</response>
+        /// <response code="401">Não autorizado. Realizar login</response>
+        /// <response code="500">Não foi possível retornar a listagem filtrada</response> 
+        [HttpGet("groupBy/{environment}/{orderBy}")]
+        public ActionResult Agrupar(string environment, string orderBy)
+        {
+            List<EventFilterDTO> events = _eventLogService.Agrupar(environment, orderBy);
+
+            if (events != null)
+            {
+                return Ok(events);
+            }
+            else
+            {
+                return NoContent();
+            }
+        }
+
+        /// <summary>
+        /// Busca os dados de acordo com os parâmetros dados pelo usuário
+        /// </summary>
+        /// <remarks>        
+        /// SearchFor can be: level, description or origin
+        /// 
+        /// Field: Send the text you want to search in searchfor chosen option
+        /// </remarks>
+        /// <response code="200">Listagem de erros feita com sucesso</response>
+        /// <response code="401">Não autorizado. Realizar login</response>
+        /// <response code="500">Não foi possível retornar a listagem filtrada</response> 
+        [HttpGet("search/{searchFor}/{field}")]
+        public ActionResult Search(string searchFor, string field)
+        {
+            List<EventLogDTO> events = _eventLogService.BuscarPorCampo(searchFor, field);
+
+            if (events != null)
+            {
+                return Ok(events);
+            }
+            else
+            {
+                return NoContent();
+            }
+        }
+        
+
         // POST api/<EventLogController>
         /// <summary>
         /// Insere um novo log de erro no sistema
         /// </summary>
         /// <response code="200">Log de erro inserido com sucesso</response>
+        /// <response code="401">Não autorizado. Realizar login</response>
         /// <response code="500">Não foi possível inserir o log de erro</response> 
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -123,9 +181,34 @@ namespace ErrorCentral.WebAPI.Controllers
 
         // PUT api/eventlog
         /// <summary>
-        /// Altera dados de algum log de erro já cadastrado, pode ser usado para arquivar um log
+        /// Arquiva um dado log de erro 
         /// </summary>
         /// <response code="200">Operação feita com sucesso</response>
+        /// <response code="401">Não autorizado. Realizar login</response>
+        /// <response code="500">Não foi possível concluir a operação</response> 
+        [HttpPut("arquivar/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public ActionResult<EventLog> Arquivar(int id)
+        {
+            var _event = _eventLogService.Arquivar(id);
+            if(_event != null)
+            {
+                return Ok(_event);
+            }
+            else
+            {
+                return NoContent();
+            }
+        }
+
+        // PUT api/eventlog
+        /// <summary>
+        /// Atualiza um dado log de erro 
+        /// </summary>
+        /// <response code="200">Operação feita com sucesso</response>
+        /// <response code="401">Não autorizado. Realizar login</response>
         /// <response code="500">Não foi possível concluir a operação</response> 
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -134,7 +217,7 @@ namespace ErrorCentral.WebAPI.Controllers
         public ActionResult<EventLog> Put(int id, [FromBody] EventLog eventLog)
         {
             var _event = _eventLogService.Atualizar(id, eventLog);
-            if(_event != null)
+            if (_event != null)
             {
                 return Ok(_event);
             }
@@ -149,6 +232,7 @@ namespace ErrorCentral.WebAPI.Controllers
         /// Deleta um dado log de erro
         /// </summary>
         /// <response code="200">Operação feita com sucesso</response>
+        /// <response code="401">Não autorizado. Realizar login</response>
         /// <response code="500">Não foi possível concluir a operação</response> 
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]

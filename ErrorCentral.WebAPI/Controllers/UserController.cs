@@ -13,7 +13,7 @@ namespace ErrorCentral.WebAPI.Controllers
     [ApiController]
     public sealed class UserController : ControllerBase
     {
-        private readonly ILoggedUserService _loggedUserService;
+        // private readonly ILoggedUserService _loggedUserService;
         private readonly IUserService _userService;
 
         public UserController(IUserService userService)
@@ -60,18 +60,21 @@ namespace ErrorCentral.WebAPI.Controllers
         ///
         /// Email precisa estar em um formato válido.
         /// </remarks>
-        /// <param name="string"></param>
-        /// <param email="string"></param>
-        /// <param senha="string"></param>
+        /// <param user="user"></param>
         /// <response code="200">Usuário cadastrado com sucesso</response>
         /// <response code="400">Confira os dados de cadastro</response>
         /// <response code="500">Não foi possível cadastrar usuário</response> 
         [HttpPost]
         public IActionResult Save(User user)
         {
-            var users = _userService.Save(user);
+            bool saved = _userService.Save(user);
 
-            return Ok(users);
+            if (saved)
+            {
+                return Ok("Usuário salvo com sucesso");
+            }
+            return StatusCode(500);
+
         }
 
         /// <summary>

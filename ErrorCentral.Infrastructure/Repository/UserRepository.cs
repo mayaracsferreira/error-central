@@ -39,7 +39,7 @@ namespace ErrorCentral.Infrastructure.Repository
             return user;
         }
 
-        public User Save(User user)
+        public bool Save(User user)
         {
             User u = context.Users.Where(x => x.Email == user.Email).FirstOrDefault();
             if (u != null)
@@ -52,7 +52,7 @@ namespace ErrorCentral.Infrastructure.Repository
             context.Entry(user).State = state;
             context.Add(user);
             context.SaveChanges();
-            return user;
+            return true;
         }
 
         public User Update(LoginUser user)

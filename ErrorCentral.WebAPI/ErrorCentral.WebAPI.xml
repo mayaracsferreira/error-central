@@ -9,6 +9,7 @@
             Retorna todos os logs de erro armazenados no sistema
             </summary>
             <response code="200">Listagem feita com sucesso</response>
+            <response code="401">Não autorizado. Realizar login</response>
             <response code="500">Não foi possível listar os erros</response> 
         </member>
         <member name="M:ErrorCentral.WebAPI.Controllers.EventLogController.Get(System.Int32)">
@@ -16,11 +17,12 @@
             Retorna todos detalhes de um log de erro dado id
             </summary>
             <response code="200">Erro retornado com sucesso</response>
+            <response code="401">Não autorizado. Realizar login</response>
             <response code="500">Não foi possível retornar o erro</response> 
         </member>
         <member name="M:ErrorCentral.WebAPI.Controllers.EventLogController.Get(System.String,System.String,System.String,System.String)">
             <summary>
-            Filtra os dados de acordo com os parâmetros dados pelo usuário
+            Filtra e agrupa os dados de acordo com os parâmetros dados pelo usuário
             </summary>
             <remarks>
             Enviroment can be: production, homologation or development
@@ -32,6 +34,34 @@
             Field: Send the text you want to search in searchfor chosen option
             </remarks>
             <response code="200">Listagem de erros feita com sucesso</response>
+            <response code="401">Não autorizado. Realizar login</response>
+            <response code="500">Não foi possível retornar a listagem filtrada</response> 
+        </member>
+        <member name="M:ErrorCentral.WebAPI.Controllers.EventLogController.Agrupar(System.String,System.String)">
+            <summary>
+            Agrupa e ordena os dados de acordo com os parâmetros dados pelo usuário
+            </summary>
+            <remarks>
+            Enviroment can be: production, homologation or development
+            
+            OrderBy can be: level or frequency (group by same description frequency)
+            
+            </remarks>
+            <response code="200">Listagem de erros feita com sucesso</response>
+            <response code="401">Não autorizado. Realizar login</response>
+            <response code="500">Não foi possível retornar a listagem filtrada</response> 
+        </member>
+        <member name="M:ErrorCentral.WebAPI.Controllers.EventLogController.Search(System.String,System.String)">
+            <summary>
+            Busca os dados de acordo com os parâmetros dados pelo usuário
+            </summary>
+            <remarks>        
+            SearchFor can be: level, description or origin
+            
+            Field: Send the text you want to search in searchfor chosen option
+            </remarks>
+            <response code="200">Listagem de erros feita com sucesso</response>
+            <response code="401">Não autorizado. Realizar login</response>
             <response code="500">Não foi possível retornar a listagem filtrada</response> 
         </member>
         <member name="M:ErrorCentral.WebAPI.Controllers.EventLogController.Post(ErrorCentral.AppDomain.Models.EventLog)">
@@ -39,13 +69,23 @@
             Insere um novo log de erro no sistema
             </summary>
             <response code="200">Log de erro inserido com sucesso</response>
+            <response code="401">Não autorizado. Realizar login</response>
             <response code="500">Não foi possível inserir o log de erro</response> 
+        </member>
+        <member name="M:ErrorCentral.WebAPI.Controllers.EventLogController.Arquivar(System.Int32)">
+            <summary>
+            Arquiva um dado log de erro 
+            </summary>
+            <response code="200">Operação feita com sucesso</response>
+            <response code="401">Não autorizado. Realizar login</response>
+            <response code="500">Não foi possível concluir a operação</response> 
         </member>
         <member name="M:ErrorCentral.WebAPI.Controllers.EventLogController.Put(System.Int32,ErrorCentral.AppDomain.Models.EventLog)">
             <summary>
-            Altera dados de algum log de erro já cadastrado, pode ser usado para arquivar um log
+            Atualiza um dado log de erro 
             </summary>
             <response code="200">Operação feita com sucesso</response>
+            <response code="401">Não autorizado. Realizar login</response>
             <response code="500">Não foi possível concluir a operação</response> 
         </member>
         <member name="M:ErrorCentral.WebAPI.Controllers.EventLogController.Delete(System.Int32)">
@@ -53,6 +93,7 @@
             Deleta um dado log de erro
             </summary>
             <response code="200">Operação feita com sucesso</response>
+            <response code="401">Não autorizado. Realizar login</response>
             <response code="500">Não foi possível concluir a operação</response> 
         </member>
         <member name="M:ErrorCentral.WebAPI.Controllers.LoginController.Post(LoginUser)">
@@ -99,9 +140,7 @@
             
              Email precisa estar em um formato válido.
              </remarks>
-             <param name="string"></param>
-             <param email="string"></param>
-             <param senha="string"></param>
+             <param user="user"></param>
              <response code="200">Usuário cadastrado com sucesso</response>
              <response code="400">Confira os dados de cadastro</response>
              <response code="500">Não foi possível cadastrar usuário</response> 

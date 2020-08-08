@@ -12,12 +12,10 @@ namespace ErrorCentral.AppDomain.Interfaces
         EventLog GetById(int Id);
         EventLog Save(EventLog eventLog);
         EventLog Update(int id, EventLog eventLog);
-       IList<EventLog> GetByLevel(string level);
-       //IList<EventLog> GetByOrigin(string origin);
-        
+        EventLog Archive(int id);
         bool Delete(int ID);
-
+        List<EventFilterDTO> GroupEvents(string environment, string orderBy);
         List<EventFilterDTO> GetFilters(string environment, string orderBy, string searchFor, string field);
-
+        List<EventLogDTO> SearchForField(string searchFor, string field);
     }
 }

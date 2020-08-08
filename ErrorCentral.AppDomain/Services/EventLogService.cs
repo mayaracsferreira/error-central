@@ -50,11 +50,11 @@ namespace ErrorCentral.AppDomain.Services
                 throw e;
             }
         }
-        public EventLog Atualizar(int id, EventLog eventLog)
+        public EventLog Arquivar(int id)
         {
             try
             {
-                return _eventlogRepository.Update(id, eventLog);
+                return _eventlogRepository.Archive(id);
             }
             catch (Exception e)
             {
@@ -74,11 +74,48 @@ namespace ErrorCentral.AppDomain.Services
             }
 
         }
+
+        public List<EventFilterDTO> Agrupar(string environment, string orderBy)
+        {
+            try
+            {
+                return _eventlogRepository.GroupEvents(environment, orderBy);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
         public List<EventFilterDTO> Filtrar(string environment, string orderBy, string searchFor, string field)
         {
             try
             {
                 return _eventlogRepository.GetFilters(environment, orderBy, searchFor, field);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public List<EventLogDTO> BuscarPorCampo(string searchFor, string field)
+        {
+            try
+            {
+                return _eventlogRepository.SearchForField(searchFor, field);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public EventLog Atualizar(int id, EventLog eventLog)
+        {
+            try
+            {
+                return _eventlogRepository.Update(id, eventLog);
             }
             catch (Exception e)
             {
