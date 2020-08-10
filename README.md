@@ -147,7 +147,7 @@ Front-end foi desenvolvido por Mayara com a tecnologia Angular.
 * Existe um sistema de automático de envio de emails de Boas vindas após a criação de usuário com email válido;<br>
 ~~desativado no deploy por questões de segurança haha~~
 * Nosso mascote se chama **BugHunter**;
-* Foi criado em Asespritee baseados nas cores da parceira do curso, *ClearSale* ;
+* Foi criado em Asesprite baseados nas cores da parceira do curso, *ClearSale* ;
 
 ### Primeira versão
 <img src="https://i.imgur.com/G8jUrKj.gif" height=100>
