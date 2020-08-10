@@ -27,11 +27,13 @@ namespace ErrorCentral.Infrastructure.Context
             if (!optionsBuilder.IsConfigured)
             {
                 //Configurações do banco de dados
-                var builder = new ConfigurationBuilder()
-               .AddJsonFile("appsettings.json");
+                optionsBuilder.UseSqlServer("Data Source=.\\sqlexpress;Initial Catalog=error;Integrated Security=True");
+               // var builder = new ConfigurationBuilder()
+               //.AddJsonFile("appsettings.json");
 
-                var config = builder.Build();
-                optionsBuilder.UseSqlServer(config["ConnectionStrings:DefaultConnection"]);
+                //var config = builder.Build();
+                
+                //optionsBuilder.UseSqlServer(config["ConnectionStrings:DefaultConnection"]);
                 //optionsBuilder.UseSqlServer(DbConfiguration.ConnectionString);
             }
 
